@@ -1,0 +1,110 @@
+PODS:
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
+    - AFNetworking/NSURLSession
+  - BRPickerView/Core (2.9.1)
+  - BRPickerView/DatePicker (2.9.1):
+    - BRPickerView/Core
+  - BRPickerView/Default (2.9.1):
+    - BRPickerView/DatePicker
+    - BRPickerView/TextPicker
+  - BRPickerView/TextPicker (2.9.1):
+    - BRPickerView/Core
+  - CocoaLumberjack (3.8.5):
+    - CocoaLumberjack/Core (= 3.8.5)
+  - CocoaLumberjack/Core (3.8.5)
+  - DZNEmptyDataSet (1.8.1)
+  - FBAEMKit (17.4.0):
+    - FBSDKCoreKit_Basics (= 17.4.0)
+  - FBSDKCoreKit (17.4.0):
+    - FBAEMKit (= 17.4.0)
+    - FBSDKCoreKit_Basics (= 17.4.0)
+  - FBSDKCoreKit_Basics (17.4.0)
+  - FDFullscreenPopGesture (1.1)
+  - GSCaptchaButton (1.0.1)
+  - IQKeyboardManager (6.5.19)
+  - LJContactManager (1.0.7)
+  - Masonry (1.1.0)
+  - MJRefresh (3.7.9)
+  - Reachability (3.2)
+  - Toast (4.1.1)
+  - TZImagePickerController (3.8.8):
+    - TZImagePickerController/Basic (= 3.8.8)
+    - TZImagePickerController/Location (= 3.8.8)
+  - TZImagePickerController/Basic (3.8.8)
+  - TZImagePickerController/Location (3.8.8)
+  - YYKit (1.0.9):
+    - YYKit/no-arc (= 1.0.9)
+  - YYKit/no-arc (1.0.9)
+
+DEPENDENCIES:
+  - AFNetworking (= 4.0.1)
+  - BRPickerView/Default (= 2.9.1)
+  - CocoaLumberjack (= 3.8.5)
+  - DZNEmptyDataSet (= 1.8.1)
+  - FBSDKCoreKit (= 17.4.0)
+  - FDFullscreenPopGesture (= 1.1)
+  - GSCaptchaButton (= 1.0.1)
+  - IQKeyboardManager (= 6.5.19)
+  - LJContactManager (= 1.0.7)
+  - Masonry (= 1.1.0)
+  - MJRefresh (= 3.7.9)
+  - Reachability (= 3.2)
+  - Toast (= 4.1.1)
+  - TZImagePickerController (= 3.8.8)
+  - YYKit (= 1.0.9)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - BRPickerView
+    - CocoaLumberjack
+    - DZNEmptyDataSet
+    - FBAEMKit
+    - FBSDKCoreKit
+    - FBSDKCoreKit_Basics
+    - FDFullscreenPopGesture
+    - GSCaptchaButton
+    - IQKeyboardManager
+    - LJContactManager
+    - Masonry
+    - MJRefresh
+    - Reachability
+    - Toast
+    - TZImagePickerController
+    - YYKit
+
+SPEC CHECKSUMS:
+  AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
+  BRPickerView: 6dd69ea2c48e0a0abf1d197a705050e13143ee63
+  CocoaLumberjack: 6a459bc897d6d80bd1b8c78482ec7ad05dffc3f0
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  FBAEMKit: 58cb5f302cdd715a56d4c1d0dfdd2e423ac1421a
+  FBSDKCoreKit: 94d7461d0cecf441b1ba7c41acfff41daa8ccd41
+  FBSDKCoreKit_Basics: 151b43db8b834d3f0e02f95d36a44ffd36265e45
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
+  GSCaptchaButton: 52fadc57ecc3fbea7cac6518b62be13b49c30d8f
+  IQKeyboardManager: c8665b3396bd0b79402b4c573eac345a31c7d485
+  LJContactManager: cebd9b2287b4aaa29b97789e7026e7c883426cbb
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJRefresh: ff9e531227924c84ce459338414550a05d2aea78
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  Toast: 1f5ea13423a1e6674c4abdac5be53587ae481c4e
+  TZImagePickerController: d084a7b97c82d387e7669dd86dc9a9057500aacf
+  YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
+
+PODFILE CHECKSUM: 12ffd22fd28a1a7895a96832930ea7c42c060620
+
+COCOAPODS: 1.16.2

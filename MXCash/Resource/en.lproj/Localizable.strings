@@ -1,0 +1,158 @@
+/* 
+  Localizable.strings
+  MXCash
+
+  Created by Yu Chen  on 2024/12/31.
+  
+*/
+
+// MARK: Guide
+"guide_title1" = "Access Cash";
+"guide_title2" = "High limits, low interest rates";
+"guide_try_again" = "Try again";
+
+// MARK: Login
+"login_title1" = "Hello!";
+"login_title2" = "Please log in to continue";
+"login_phone" = "Mobile number";
+"login_phone_placeholder" = "Enter mobile number";
+"login_code" = "Verification code";
+"login_code_placeholder" = "Verification code";
+"login_code_btn" = "Get Code";
+"login_voice_code_btn" = "Voice verification";
+"login_btn_title" = "Log in";
+"login_protocol1" = "I have read and agree";
+"login_protocol2" = " <Privacy Agreement>";
+"login_toast1" = "Please enter your phone number";
+"login_toast2" = "Please enter the verification code";
+
+// MARK: Home
+"home_title" = "Welcome to Access Cash!";
+"home_tip" = "It supports flexible adjustment of repayment period.";
+"home_apply_title" = "Loan amount";
+"home_apply_btn_title" = "Apply Now";
+"home_process_title0" = "Simple steps for quick passage";
+"home_process_title1" = "Apply for a loan";
+"home_process_title2" = "Submit information";
+"home_process_title3" = "Access to credit";
+"home_big_card_title1" = "More functions";
+"home_big_card_title2" = "Method of use";
+"home_plan_btn" = "Privacy \nPolicy";
+"home_feedback_btn" = "Collect \nfeedback";
+"home_product_apply" = "Apply";
+"home_product_title" = "More Products";
+"home_product_see" = "see more";
+
+// MARK: Order
+"order_nav_title" = "Order Center";
+"order_menu_left" = "Apply";
+"order_menu_mid" = "Repayment";
+"order_menu_right" = "Finished";
+"order_empty_title" = "Here is no order yet, please apply now";
+"order_empty_try_title" = "Go to Apply";
+"order_check" = "Check";
+
+// MARK: Mine
+"mine_nav_title" = "Personal Center";
+"mine_service" = "My Services";
+"mine_tip" = " Access Cash is here to help you ";
+
+// MARK: Calcular
+"calcular_nav_title" = "Calculator";
+"calcular_title1" = "Loan Amount（₹）";
+"calcular_title2" = "Interest Rate（₹）";
+"calcular_title3" = "Loan Term";
+"calcular_btn_title" = "Calculate";
+"calcular_reset_title" = "Reset";
+"calcular_result" = "Calculation results";
+"calcular_plan" = "Repayment plan";
+"calcular_day" = "Days";
+"calcular_month" = "Month";
+"calcular_placeholder1" = "principal amount";
+"calcular_placeholder2" = "principal loan rate";
+"calcular_placeholder3" = "principal loan term";
+"calcular_plan_amount" = "Payment amount";
+"calcular_plan_schedule" = "Schedule:1/%ld";
+
+// MARK: Certification
+"certification_process_title" = "Certification progress";
+"certification_nav_title" = "Access Cash";
+"pop_bank_nav_title" = "Bank Info";
+"certification_tip" = "Friendly loan options you can trust";
+"certification_max_amount" = "Maximum loan amount";
+"certification_protocol" = "I have read and agree %@";
+"certification_loan" = "Loan";
+"certification_question" = "Questionnaire";
+"certification_question_tip" = "Dear user, hello! In order to provide you with better lending services, we sincerely invite you to participate in this survey and look forward to your completion.";
+"certification_submit" = "Próximo";
+"certification_id_nav_title" = "Identity information";
+"certification_info_placeholder" = "Please select";
+
+// MARK: Setting
+"setting_nav_title" = "Settings";
+"setting_tip" = "With a high degree of transparency, all terms, interest rates and related fees are clearly set out in the contract.";
+"setting_version" = "Version";
+"setting_cancel" = "Account cancellation";
+"setting_sign" = "Sign out";
+
+// MARK: Cancel
+"cancel_nav_title" = "Account cancellation";
+"cancel_title1" = "Delete account\n";
+"cancel_title2" = "Deleting your account will result in the permanent loss of the following data and features:";
+"cancel_title3" = "Personal Information: This includes your profile.preferences, and other personal data.";
+"cancel_title4" = "History: Al historical records will be deleted and cannot be recovered.";
+"cancel_title5" = "App Permissions: You will no longer be able to use any features and services of this application.";
+"cancel_title6" = "All loans have been repaid";
+"cancel_title7" = "I have read and agreed to the above";
+"cancel_title8" = "Account cancellation";
+
+// MARK: Pop
+"pop_signout" = "Sign out";
+"pop_signout_title" = "You'll have your loan in no time! Sure you want out?";
+"pop_confirm_title" = "Confirm";
+"pop_signout_rate" = "%@/day";
+"pop_card_certification" = "Kind tips";
+"pop_card_certification1" = "Please confirm";
+"pop_card_certification2" = "Date Selection";
+"pop_card_certification3" = "Please Select";
+"pop_card_certification4" = "Please select an address";
+"pop_card_certification_front_tip" = "* Please submit certification according to the example to avoid blurring, obstruction, and reflection";
+"pop_card_certification_face_tip" = "* Please take off your hat and keep it well it,facing the screen directly";
+"pop_card_certification_tip" = "Please check your lD information correctly, once submitted it is not changed again";
+"pop_card_certification_error0" = "Error sample";
+"pop_card_certification_error1" = "Incomplete";
+"pop_card_certification_error2" = "Blurry";
+"pop_card_certification_error3" = "Strong light";
+"pop_card_certification_error4" = "Shake";
+"pop_card_certification_error5" = "Low light";
+"pop_card_certification_error6" = "Occlusion";
+"pop_personal_nav_title" = "Personal Information";
+"pop_work_nav_title" = "Work Information";
+"pop_contacts_nav_title" = "Emergency Contact";
+"pop_personal_info_name" = "Name";
+"pop_personal_info_id" = "ID number";
+"pop_personal_info_birthday" = "Birthday";
+"pop_time_day" = "Day";
+"pop_time_month" = "Month";
+"pop_time_year" = "Year";
+"pop_city_choise" = "Please choose";
+
+// MARK: Alert
+"alert_sheet_photo" = "Photo Album";
+"alert_sheet_camera" = "Camera";
+"alert_sheet_cancel" = "Cancel";
+"alert_sheet_ok" = "OK";
+"alert_id_certification" = "Please upload a photo of your ID first";
+"alert_addressbook" = "The APP applies to access the contact list. Easily upload contact information to simplify steps and accelerate the loan application.";
+"alert_location" = "The current application collects your location information, uses it for loan risk assessment, and recommends personalized products to you. You can open Settings-Privacy System and set it to off at any time.";
+"alert_camera" = "Authorize camera access to easily take ID card photos and have a convenient operation process.";
+"alert_album" = "Grant album permission to conveniently select and upload identity photos and accelerate the application process.";
+"alert_address" = "Please verify your address";
+
+// MARK: Refresh
+"refresh_pull_idle" = "Pull down to refresh";
+"refresh_pulling" = "Release to refresh";
+"refresh_refreshing" = "Loading...";
+"refresh_footer_idle" = "Tap or pull up to load more";
+"refresh_footer_refreshing" = "Loading...";
+"refresh_footer_nomoredata" = "No more data";

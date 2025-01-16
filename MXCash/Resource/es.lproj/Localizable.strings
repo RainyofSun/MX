@@ -1,0 +1,156 @@
+/* 
+  Localizable.strings
+  MXCash
+
+  Created by Yu Chen  on 2024/12/31.
+  
+*/
+
+// MARK: Guide
+"guide_title1" = "Access Cash";
+"guide_title2" = "Límites altos, tasas de interés bajas";
+"guide_try_again" = "Intentar de nuevo";
+
+// MARK: Login
+"login_title1" = "¡Hola!";
+"login_title2" = "Inicie sesión para continuar";
+"login_phone" = "Número de móvil";
+"login_phone_placeholder" = "Introduzca el número de móvil";
+"login_code" = "Código de verificación";
+"login_code_placeholder" = "Código de verificación";
+"login_code_btn" = "Obtener";
+"login_voice_code_btn" = "Verificación de voz";
+"login_btn_title" = "Conectarse";
+"login_protocol1" = "He leído y acepto";
+"login_protocol2" = " <Contrato de privacidad>";
+"login_toast1" = "Por favor introduzca su número de teléfono";
+"login_toast2" = "Introduzca el código de verificación";
+
+// MARK: Home
+"home_title" = "¡Bienvenido a Access Cash!";
+"home_tip" = "Permite un ajuste flexible del periodo de amortización.";
+"home_apply_title" = "Importe del préstamo";
+"home_apply_btn_title" = "Solicitar ahora";
+"home_process_title0" = "Pasos sencillos para un paso rápido";
+"home_process_title1" = "Solicitar un \npréstamo";
+"home_process_title2" = "Enviar \ninformación";
+"home_process_title1" = "Acceso al \ncrédito";
+"home_big_card_title1" = "Más funciones";
+"home_big_card_title2" = "Modo de empleo";
+"home_plan_btn" = "Política de \nprivacidad";
+"home_feedback_btn" = "Recoger \nopiniones";
+"home_product_apply" = "Solicitar";
+"home_product_title" = "Más productos";
+"home_product_see" = "ver más";
+
+// MARK: Order
+"order_nav_title" = "Centro de orden";
+"order_menu_left" = "Aplicando";
+"order_menu_mid" = "Reembolso";
+"order_menu_right" = "Finalizado";
+"order_empty_title" = "Aquí no hay ningún pedido todavía, por favor solicite ahora";
+"order_empty_try_title" = "Ir a Solicitar";
+"order_check" = "Consulte";
+
+// MARK: Calcular
+"calcular_nav_title" = "Calculadora";
+"calcular_title1" = "Plazo del préstamo（$）";
+"calcular_title2" = "Tipo de interés（$）";
+"calcular_title3" = "El plazo";
+"calcular_btn_title" = "Calcule";
+"calcular_reset_title" = "Restablecer";
+"calcular_result" = "Resultados de los cálculos";
+"calcular_plan" = "Plan de amortización";
+"calcular_day" = "Dia";
+"calcular_month" = "Mes";
+"calcular_placeholder1" = "importe principal";
+"calcular_placeholder2" = "Tipo de préstamo principal";
+"calcular_placeholder3" = "Plazo del préstamo principal";
+
+// MARK: Certification
+"certification_process_title" = "Importe máximo del préstamo";
+"certification_nav_title" = "Access Cash";
+"pop_bank_nav_title" = "Información del banco";
+"certification_tip" = "Préstamos amistosos en los que puede confiar";
+"certification_max_amount" = "Importe máximo del préstamo";
+"certification_protocol" = "He leído y acepto el %@";
+"certification_loan" = "Préstamo";
+"certification_question" = "Cuestionario";
+"certification_question_tip" = "Estimado usuario, ¡hola! Con el fin de ofrecerle mejores servicios de préstamo, le invitamos sinceramente a participar en esta encuesta y esperamos que la complete.";
+"certification_submit" = "Next";
+"certification_id_nav_title" = "Información de identidad";
+"certification_info_placeholder" = "Por favor seleccione";
+
+// MARK: Mine
+"mine_nav_title" = "Centro Personal";
+"mine_service" = "Mis servicios";
+"mine_tip" = " Access Cash está aquí para ayudarle ";
+
+// MARK: Setting
+"setting_nav_title" = "Ajustes";
+"setting_tip" = "Con un alto grado de transparencia, todas las condiciones, tipos de interés y comisiones relacionadas se establecen claramente en el contrato.";
+"setting_version" = "Versión";
+"setting_cancel" = "Cancelación de la cuenta";
+"setting_sign" = "Cerrar sesión";
+
+// MARK: Cancel
+"cancel_nav_title" = "Cancelación de la cuenta";
+"cancel_title1" = "Eliminar cuenta\n";
+"cancel_title2" = "La eliminación de su cuenta conllevará la pérdida permanente de los siguientes datos y funciones:";
+"cancel_title3" = "Información personal: Esto incluye su perfil, preferencias y otros datos personales.";
+"cancel_title4" = "Historia: Todos los registros históricos se borrarán y no se podrán recuperar.";
+"cancel_title5" = "Permisos de la aplicación: Ya no podrás utilizar ninguna función ni servicio de esta aplicación.";
+"cancel_title6" = "Todos los préstamos han sido reembolsados";
+"cancel_title7" = "He leído y estoy de acuerdo con lo anterior.";
+"cancel_title8" = "Cancelación de la cuenta";
+
+// MARK: Pop
+"pop_signout" = "Cerrar sesión";
+"pop_signout_title" = "Tendrás tu préstamo en un abrir y cerrar de ojos. ¿Seguro que quieres dejarlo?";
+"pop_confirm_title" = "Confirmar";
+"pop_signout_rate" = "%@/dia";
+"pop_card_certification" = "Consejos amables";
+"pop_card_certification1" = "Por favor confirmar";
+"pop_card_certification2" = "Fecha de selección";
+"pop_card_certification3" = "Por favor seleccione";
+"pop_card_certification4" = "Seleccione una dirección";
+"pop_card_certification_front_tip" = "* Por favor, presente la certificación según el ejemplo para evitar desenfoques, obstrucciones y reflejos.";
+"pop_card_certification_face_tip" = "* Por favor, quítate el sombrero y mantenlo bien, mirando directamente a la pantalla";
+"pop_card_certification_tip" = "Por favor, compruebe que los datos de su DNI son correctos, una vez enviados no se vuelven a modificar.";
+"pop_card_certification_error0" = "Muestra de errores";
+"pop_card_certification_error1" = "Incompleto";
+"pop_card_certification_error2" = "Borroso";
+"pop_card_certification_error3" = "Luz fuerte";
+"pop_card_certification_error4" = "Agitar";
+"pop_card_certification_error5" = "Poca luz";
+"pop_card_certification_error6" = "Oclusión";
+"pop_personal_nav_title" = "Información personal";
+"pop_work_nav_title" = "Información sobre el trabajo";
+"pop_contacts_nav_title" = "Contacto de emergencia";
+"pop_personal_info_name" = "Nombre";
+"pop_personal_info_id" = "Número de identificación";
+"pop_personal_info_birthday" = "Cumpleaños cumpleaños";
+"pop_time_day" = "Dia";
+"pop_time_month" = "Mes mes";
+"pop_time_year" = "año";
+"pop_city_choise" = "Por favor, elija";
+
+// MARK: Alert
+"alert_sheet_photo" = "Álbum de fotos";
+"alert_sheet_camera" = "Cámara de fotos";
+"alert_sheet_cancel" = "Cancelar";
+"alert_sheet_ok" = "OK";
+"alert_id_certification" = "Por favor, primero cargue una foto de su identificación";
+"alert_addressbook" = "La aplicación se aplica para acceder a la lista de contactos. Cargar fácilmente la información de contacto para simplificar los pasos y acelerar la solicitud de préstamo.";
+"alert_location" = "La aplicación actual recopila su información de ubicación, la utiliza para la evaluación de riesgos de préstamos y le recomienda productos personalizados. Puede abrir Settings-Privacy System y desactivarlo en cualquier momento.";
+"alert_camera" = "Autorizar el acceso a la cámara para tomar fácilmente las fotos de la tarjeta de identificación y tener un proceso de operación conveniente.";
+"alert_album" = "Conceder permiso al álbum para seleccionar y subir cómodamente fotos de identidad y acelerar el proceso de solicitud.";
+"alert_address" = "Por favor verifique su dirección";
+
+// MARK: Refresh
+"refresh_pull_idle" = "Tire hacia abajo para refres.";
+"refresh_pulling" = "Liberación para actualizar";
+"refresh_refreshing" = "Carga...";
+"refresh_footer_idle" = "Toque o tire hacia arriba para cargar más";
+"refresh_footer_refreshing" = "Carga...";
+"refresh_footer_nomoredata" = "No más datos";

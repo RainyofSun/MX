@@ -1,0 +1,6 @@
+framework module Pods_MXCash {
+  umbrella header "Pods-MXCash-umbrella.h"
+
+  export *
+  module * { export * }
+}
