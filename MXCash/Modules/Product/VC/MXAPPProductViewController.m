@@ -316,9 +316,15 @@
                 }];
             }
         } else {
-            [tempView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.right.top.mas_equalTo(contentView);
-            }];
+            if (idx == models.count - 1) {
+                [tempView mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.edges.mas_equalTo(contentView);
+                }];
+            } else {
+                [tempView mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.right.top.mas_equalTo(contentView);
+                }];
+            }
         }
         
         tempItem = tempView;

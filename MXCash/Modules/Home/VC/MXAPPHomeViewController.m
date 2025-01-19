@@ -35,7 +35,10 @@
     [self setupUI];
     [self layoutHomeViews];
     [self downloadCityList];
-    [self showLocationAlert];
+    // 延迟5秒弹窗
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self showLocationAlert];
+    });
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -44,8 +47,8 @@
 }
 
 - (void)showLocationAlert {
-    if ([[MXGlobal global].languageCode isEqualToString:@"2"]
-        && [[MXAuthorizationTool authorization] locationAuthorization] != Authorized && [[MXAuthorizationTool authorization] locationAuthorization] != Limited && [MXUserDefaultCache shouldShowLocationAlert]) {
+    MXAuthorizationStatus status = [[MXAuthorizationTool authorization] locationAuthorization];
+    if ([[MXGlobal global].languageCode isEqualToString:@"2"] && status != Authorized && status != Limited && [MXUserDefaultCache shouldShowLocationAlert]) {
         NSString *title = [[MXAPPLanguage language] languageValue:@"alert_location"];
         [[UIDevice currentDevice].keyWindow.rootViewController showSystemStyleSettingAlert:title okTitle:nil cancelTitle:nil];
     }
@@ -86,6 +89,7 @@
         if (homeModel.scrollMsg.count != 0) {
             [weakSelf.applyView reloadCashMarquee:homeModel.scrollMsg];
         }
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
         [weakSelf.contentView refresh:NO];
     }];
@@ -100,6 +104,10 @@
 }
 
 - (void)gotoProductDetail:(NSString *)productId sender:(MXAPPLoadingButton *)sender {
+    if (!sender.enabled) {
+        DDLogDebug(@"拦截进入 -------------");
+        return;
+    }
     [sender startAnimation];
     WeakSelf;
     [MXNetRequestManager AFNReqeustType:AFNRequestType_Post reqesutUrl:@"secondary/poet" params:@{@"tin": productId} success:^(NSURLSessionDataTask * _Nullable task, struct SuccessResponse responseObject) {

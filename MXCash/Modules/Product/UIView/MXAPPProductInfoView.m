@@ -61,6 +61,8 @@
     if (model.arguably.lists != nil && ![model.arguably.lists isEqual:[NSNull null]]) {
         self.rateLab.text = [NSString stringWithFormat:@"%@: %@", model.arguably.lists.coined, model.arguably.lists.originated];
     }
+    
+    self.titleLab.text = model.returning;
 }
 
 - (UILabel *)titleLab {

@@ -55,6 +55,7 @@
 - (void)didSelectedMenuItem:(NSInteger)tag {
     if (tag == 0) {
         [self.hScrollView setContentOffset:CGPointZero animated:YES];
+        [self.applyTab beginRefresh:YES];
     } else if (tag == 1) {
         if (self.repaymentTab == nil) {
             self.repaymentTab = [[MXAPPOrderTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
@@ -68,7 +69,7 @@
             self.repaymentTab.tag = 1006;
             [self.repaymentTab switchOrderListAndRefresh];
         }
-        
+        [self.repaymentTab beginRefresh:YES];
         [self.hScrollView setContentOffset:CGPointMake(ScreenWidth, 0) animated:YES];
     } else {
         if (self.finishedTab == nil) {
@@ -84,6 +85,7 @@
             [self.finishedTab switchOrderListAndRefresh];
         }
         
+        [self.finishedTab beginRefresh:YES];
         [self.hScrollView setContentOffset:CGPointMake(ScreenWidth * tag, 0) animated:YES];
     }
 }

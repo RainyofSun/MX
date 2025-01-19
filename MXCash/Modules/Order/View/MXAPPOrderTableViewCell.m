@@ -70,7 +70,7 @@
 @property (nonatomic, strong) UILabel *productLab;
 @property (nonatomic, strong) MXAPPLoadingButton *checkBtn;
 @property (nonatomic, strong) MXAPPGradientView *gradientView;
-@property (nonatomic, strong) UILabel *protocolLab;
+@property (nonatomic, strong) UIButton *protocolLab;
 
 @property (nonatomic, copy) NSString *linkUrl;
 @end
@@ -83,7 +83,7 @@
         self.backgroundColor = [UIColor clearColor];
         self.contentView.backgroundColor = [UIColor clearColor];
         
-        [self.protocolLab addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickProtocolButton)]];
+        [self.protocolLab addTarget:self action:@selector(clickProtocolButton) forControlEvents:UIControlEventTouchUpInside];
         
         [self.contentView addSubview:self.bgView];
         [self.bgView addSubview:self.productImgView];
@@ -139,9 +139,11 @@
         [self.productImgView setImageWithURL:[NSURL URLWithString:model.docked] options:YYWebImageOptionProgressiveBlur];
     }
     self.productLab.text = model.decoy;
+    [self.checkBtn setTitle:model.gibbs forState:UIControlStateNormal];
+    
     [self buildOrderItem:model.raleigh];
     if (![NSString isEmptyString:model.civic]) {
-        self.protocolLab.attributedText = [[NSAttributedString alloc] initWithString:model.civic attributes:@{NSForegroundColorAttributeName: ORANGE_COLOR_FA6603, NSFontAttributeName: [UIFont systemFontOfSize:15 weight:UIFontWeightMedium], NSUnderlineColorAttributeName: ORANGE_COLOR_FA6603, NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)}];
+        [self.protocolLab setAttributedTitle:[[NSAttributedString alloc] initWithString:model.civic attributes:@{NSForegroundColorAttributeName: ORANGE_COLOR_FA6603, NSFontAttributeName: [UIFont systemFontOfSize:15 weight:UIFontWeightMedium], NSUnderlineColorAttributeName: ORANGE_COLOR_FA6603, NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)}] forState:UIControlStateNormal];
     }
 }
 
@@ -236,9 +238,9 @@
     return _gradientView;
 }
 
-- (UILabel *)protocolLab {
+- (UIButton *)protocolLab {
     if (!_protocolLab) {
-        _protocolLab = [[UILabel alloc] initWithFrame:CGRectZero];
+        _protocolLab = [UIButton buttonWithType:UIButtonTypeCustom];
     }
     
     return _protocolLab;

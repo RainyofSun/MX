@@ -28,7 +28,7 @@
 }
 
 + (NSString *)readLoginInfoFormCache {
-    return [[self MXGetCacheValueForKey:cache_login_info_key] stringValue];
+    return [self MXGetCacheValueForKey:cache_login_info_key];
 }
 
 + (void)deleteLoginInfoCache {

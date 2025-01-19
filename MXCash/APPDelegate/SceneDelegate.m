@@ -107,7 +107,7 @@
     }];
     
     [[MXAuthorizationTool authorization] requestLocationAuthrization:WhenInUse completeHandler:^(BOOL status) {
-            
+        
     }];
     
     if ([[MXAuthorizationTool authorization] locationAuthorization] == Authorized || [[MXAuthorizationTool authorization] locationAuthorization] == Limited) {

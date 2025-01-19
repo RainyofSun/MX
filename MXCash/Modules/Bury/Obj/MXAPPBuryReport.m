@@ -85,6 +85,10 @@
         [params setValue:order forKey:@"unknown"];
     }
     
+    if (![NSString isEmptyString:[MXGlobal global].productIDNumber]) {
+        [params setValue:[MXGlobal global].productIDNumber forKey:@"bowl"];
+    }
+    
     if (![NSString isEmptyString:[UIDevice currentDevice].readIDFVFormKeyChain]) {
         [params setValue:[UIDevice currentDevice].readIDFVFormKeyChain forKey:@"oval"];
     }

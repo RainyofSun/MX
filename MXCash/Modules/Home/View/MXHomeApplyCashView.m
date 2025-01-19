@@ -58,6 +58,8 @@
     self.termLab.attributedText = [NSAttributedString attributeText1:productModel.neill text1Color:BLACK_COLOR_333333 text1Font:[UIFont systemFontOfSize:18 weight:UIFontWeightMedium] text2:productModel.eugene text2Color:BLACK_COLOR_666666 text1Font:[UIFont systemFontOfSize:12] paramDistance:2 paraAlign:NSTextAlignmentCenter];
     self.rateLab.attributedText = [NSAttributedString attributeText1:productModel.hale text1Color:BLACK_COLOR_333333 text1Font:[UIFont systemFontOfSize:18 weight:UIFontWeightMedium] text2:productModel.nathan text2Color:BLACK_COLOR_666666 text1Font:[UIFont systemFontOfSize:12] paramDistance:2 paraAlign:NSTextAlignmentCenter];
     [self.applyButton setTitle:productModel.gibbs forState:UIControlStateNormal];
+    self.titleLab.text = productModel.josiah;
+    
 }
 
 - (void)clickLoanApplyButton:(MXAPPLoadingButton *)sender {
