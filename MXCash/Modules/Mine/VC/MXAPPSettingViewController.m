@@ -105,7 +105,8 @@
             [popView dismissAnimation];
             // 删除本地消息
             [[MXGlobal global] deleteUserLoginInfo];
-            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+            [[NSNotificationCenter defaultCenter] postNotificationName:(NSNotificationName)APP_LOGIN_EXPIRED_NOTIFICATION object:nil];
+            [weakSelf.navigationController popToRootViewControllerAnimated:NO];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
             [sender stopAnimation];
         }];

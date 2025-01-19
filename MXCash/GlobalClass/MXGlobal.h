@@ -8,12 +8,12 @@
 #import <Foundation/Foundation.h>
 #import "MXLoginModel.h"
 
-static NSString * const APP_LOGIN_STATUS = @"loginModel";
+static NSString * const APP_LOGIN_STATUS = @"isLoginOut";
 
 @interface MXGlobal : NSObject
 
 /// 登录信息
-@property (nonatomic, strong) MXLoginModel *loginModel;
+@property (nonatomic, strong) MXLoginModel * loginModel;
 /// 语言代码 1 = 印度 2 = 墨西哥
 @property (nonatomic, copy) NSString *languageCode;
 /// 隐私协议

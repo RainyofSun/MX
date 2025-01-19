@@ -62,6 +62,7 @@
         weakSelf.cardModel = cardModel;
         [weakSelf.frontItem updateCardItemTitle:cardModel.id_front_msg cardImg:cardModel.surprises.figures];
         [weakSelf.backItem updateCardItemTitle:cardModel.face_msg cardImg:cardModel.father.figures];
+        weakSelf.isFace = weakSelf.cardModel.surprises.ssn;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
         
     }];
@@ -95,6 +96,7 @@
                         [pView dismissAnimation];
                         // 埋点
                         [MXAPPBuryReport riskControlReport:APP_TakingCardPhoto beginTime:weakSelf.buryBeginTime endTime:[NSDate timeStamp] orderNumber:nil];
+                        weakSelf.cardModel.surprises.ssn = YES;
                     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
                         [sender stopAnimation];
                     }];
@@ -102,8 +104,8 @@
             } else {
                 // 埋点
                 [MXAPPBuryReport riskControlReport:APP_TakingCardPhoto beginTime:weakSelf.buryBeginTime endTime:[NSDate timeStamp] orderNumber:nil];
+                weakSelf.cardModel.surprises.ssn = YES;
             }
-            
             [weakSelf.frontItem updateCardItemTitle:nil cardImg:cardInfoModel.figures];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {

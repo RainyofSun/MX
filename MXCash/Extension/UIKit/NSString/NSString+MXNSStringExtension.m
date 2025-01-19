@@ -10,7 +10,7 @@
 @implementation NSString (MXNSStringExtension)
 
 + (BOOL)isEmptyString:(NSString *)str {
-    if (str == nil || str.length == 0) {
+    if ([str isEqual:[NSNull null]] || str == nil || str.length == 0) {
         return YES;
     }
     

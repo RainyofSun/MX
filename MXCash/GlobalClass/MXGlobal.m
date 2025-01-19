@@ -8,6 +8,12 @@
 #import "MXGlobal.h"
 #import "MXUserDefaultCache.h"
 
+@interface MXGlobal ()
+
+@property (nonatomic, assign, readwrite) BOOL isLoginOut;
+
+@end
+
 @implementation MXGlobal
 
 + (instancetype)global {
@@ -16,14 +22,11 @@
     dispatch_once(&onceToken, ^{
         if (gl == nil) {
             gl = [[MXGlobal alloc] init];
+            gl.isLoginOut = YES;
         }
     });
     
     return gl;
-}
-
-- (BOOL)isLoginOut {
-    return self.loginModel == nil || [self.loginModel isEqual:[NSNull null]];
 }
 
 - (NSString *)cityPath {
@@ -39,6 +42,7 @@
 }
 
 - (void)encoderUserLoginInfo {
+    self.isLoginOut = NO;
     NSString *jsonStr = self.loginModel.modelToJSONString;
     if (jsonStr.length != 0) {
         [MXUserDefaultCache cacheLoginInfo:jsonStr];
@@ -50,11 +54,12 @@
     if (jsonStr.length == 0) {
         return;
     }
-    
+    self.isLoginOut = NO;
     self.loginModel = [MXLoginModel modelWithJSON:jsonStr];
 }
 
 - (void)deleteUserLoginInfo {
+    self.isLoginOut = YES;
     self.productIDNumber = nil;
     self.loginModel = nil;
     [MXUserDefaultCache deleteLoginInfoCache];

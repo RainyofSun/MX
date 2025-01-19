@@ -69,7 +69,6 @@
 
 - (void)geocoderInfoForLocation:(CLLocation *)location {
     if (![MXAPPNetObserver Observer].netWorkReachable) {
-        [[UIDevice currentDevice].keyWindow makeToast:@"Network lost"];
         return;
     }
     

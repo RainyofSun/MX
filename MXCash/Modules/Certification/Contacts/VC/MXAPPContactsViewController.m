@@ -66,6 +66,8 @@
         [tempItem reloadContactsItemWithModel:obj];
         tempItem.tag = 1000 + idx;
         [weakSelf.vScrollView addSubview:tempItem];
+        // 保存联系人信息
+        [weakSelf saveEmergencyPersonInfo:tempItem.tag userName:obj.robin userPhone:obj.repeated relationship:obj.feat];
         
         if (topItem != nil) {
             if (idx == modelSource.count - 1) {

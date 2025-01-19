@@ -31,17 +31,6 @@
     [self mineNetRequest];
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    if ([keyPath isEqualToString:APP_LOGIN_STATUS]) {
-        MXLoginModel *loginModel = [change valueForKey:NSKeyValueChangeNewKey];
-        if ([loginModel isEqual:[NSNull null]] || loginModel == nil) {
-            self.userPhoneLab.text = @"";
-        } else {
-            self.userPhoneLab.text = loginModel.composer.maskPhoneNumber;
-        }
-    }
-}
-
 - (void)mineNetRequest {
     WeakSelf;
     [MXNetRequestManager AFNReqeustType:AFNRequestType_Get reqesutUrl:@"secondary/duck" params:nil success:^(NSURLSessionDataTask * _Nullable task, struct SuccessResponse responseObject) {
@@ -153,8 +142,14 @@
     [[MXAPPRouting shared] pageRouter:sender.jumpURL backToRoot:YES targetVC:nil];
 }
 
+- (void)loginSuccess {
+    dispatch_async_on_main_queue(^{
+        self.userPhoneLab.text = [MXGlobal global].isLoginOut ? @"" : [MXGlobal global].loginModel.composer.maskPhoneNumber;
+    });
+}
+
 - (void)setupUI {
-    [[MXGlobal global] addObserver:self forKeyPath:APP_LOGIN_STATUS options:NSKeyValueObservingOptionNew context:nil];
+    
     [self topImage:@"mine_top_bg"];
     self.title = [[MXAPPLanguage language] languageValue:@"mine_nav_title"];
     
@@ -169,6 +164,8 @@
     
     self.tipLab.attributedText = textStr;
     self.userPhoneLab.text = [MXGlobal global].loginModel.composer.maskPhoneNumber;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:(NSNotificationName)APP_LOGIN_SUCCESS_NOTIFICATION object:nil];
     
     [self.view addSubview:self.userImgView];
     [self.view addSubview:self.userPhoneLab];

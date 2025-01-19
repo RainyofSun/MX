@@ -140,8 +140,8 @@
     }
     self.productLab.text = model.decoy;
     [self buildOrderItem:model.raleigh];
-    if (![NSString isEmptyString:model.whalers]) {
-        self.protocolLab.attributedText = [[NSAttributedString alloc] initWithString:model.whalers attributes:@{NSForegroundColorAttributeName: ORANGE_COLOR_FA6603, NSFontAttributeName: [UIFont systemFontOfSize:15 weight:UIFontWeightMedium], NSUnderlineColorAttributeName: ORANGE_COLOR_FA6603, NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)}];
+    if (![NSString isEmptyString:model.civic]) {
+        self.protocolLab.attributedText = [[NSAttributedString alloc] initWithString:model.civic attributes:@{NSForegroundColorAttributeName: ORANGE_COLOR_FA6603, NSFontAttributeName: [UIFont systemFontOfSize:15 weight:UIFontWeightMedium], NSUnderlineColorAttributeName: ORANGE_COLOR_FA6603, NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)}];
     }
 }
 

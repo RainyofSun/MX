@@ -23,17 +23,8 @@
     [super viewDidLoad];
     [self setupUI];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginAPP) name:(NSNotificationName)APP_LOGIN_EXPIRED_NOTIFICATION object:nil];
-    self.selectedIndex = 0;
-    [[MXGlobal global] addObserver:self forKeyPath:APP_LOGIN_STATUS options:NSKeyValueObservingOptionNew context:nil];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    if ([keyPath isEqualToString:APP_LOGIN_STATUS]) {
-        MXLoginModel *loginModel = [change valueForKey:NSKeyValueChangeNewKey];
-        if (loginModel == nil || [loginModel isEqual:[NSNull null]]) {
-            self.selectedIndex = 0;
-        }
-    }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:(NSNotificationName)APP_LOGIN_SUCCESS_NOTIFICATION object:nil];
+    self.selectedIndex = 0;    
 }
 
 - (void)setupUI {
@@ -80,9 +71,18 @@
 - (void)loginAPP {
     WeakSelf;
     dispatch_async_on_main_queue(^{
+        self.selectedIndex = 0;
         MXBaseNavigationController *navController = [[MXBaseNavigationController alloc] initWithRootViewController:[[MXAPPLoginViewController alloc] init]];
         navController.modalPresentationStyle = UIModalPresentationFullScreen;
         [weakSelf presentViewController:navController animated:true completion:nil];
+    });
+}
+
+- (void)loginSuccess {
+    dispatch_async_on_main_queue(^{
+        if ([MXGlobal global].isLoginOut) {
+            self.selectedIndex = 0;
+        }
     });
 }
 

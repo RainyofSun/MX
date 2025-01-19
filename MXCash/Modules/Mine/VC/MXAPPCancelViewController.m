@@ -114,12 +114,19 @@
 }
 
 - (void)clickCancelButton:(MXAPPLoadingButton *)sender {
+    if (!self.agreeBtn.isSelected) {
+        [self.view makeToast:[[MXAPPLanguage language] languageValue:@"cancel_agree_cancel_protocol"]];
+        return;
+    }
+    
     [sender startAnimation];
+    WeakSelf;
     [MXNetRequestManager AFNReqeustType:AFNRequestType_Post reqesutUrl:@"secondary/troubadour" params:nil success:^(NSURLSessionDataTask * _Nullable task, struct SuccessResponse responseObject) {
         [sender stopAnimation];
         // 删除本地消息
         [[MXGlobal global] deleteUserLoginInfo];
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [[NSNotificationCenter defaultCenter] postNotificationName:(NSNotificationName)APP_LOGIN_EXPIRED_NOTIFICATION object:nil];
+        [weakSelf.navigationController popToRootViewControllerAnimated:NO];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
         [sender stopAnimation];
     }];
@@ -190,7 +197,6 @@
         _agreeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_agreeBtn setImage:[UIImage imageNamed:@"login_protocol_normal"] forState:UIControlStateNormal];
         [_agreeBtn setImage:[UIImage imageNamed:@"login_protocol_sel"] forState:UIControlStateSelected];
-        _agreeBtn.selected = YES;
     }
     
     return _agreeBtn;

@@ -76,7 +76,9 @@
         if (![NSString isEmptyString: loanModel.whale.coined]) {
             weakSelf.agreeBtn.hidden = NO;
             weakSelf.protocolBtn.hidden = NO;
-            [weakSelf.protocolBtn setAttributedTitle:[NSAttributedString attributeText1:[[MXAPPLanguage language] languageValue:@"certification_protocol"] text1Color:BLACK_COLOR_333333 text1Font:[UIFont systemFontOfSize:14] text2:[NSString stringWithFormat:@"<%@>", loanModel.whale.coined] text2Color:ORANGE_COLOR_FA6603 text1Font:[UIFont systemFontOfSize:14] paramDistance:-1 paraAlign:NSTextAlignmentCenter] forState:UIControlStateNormal];
+            NSMutableAttributedString *titleStr = [[NSMutableAttributedString alloc] initWithString:[[MXAPPLanguage language] languageValue:@"certification_protocol"] attributes:@{NSForegroundColorAttributeName: BLACK_COLOR_333333, NSFontAttributeName: [UIFont systemFontOfSize:14]}];
+            [titleStr appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"<%@>", loanModel.whale.coined] attributes:@{NSForegroundColorAttributeName: ORANGE_COLOR_FA6603, NSFontAttributeName: [UIFont systemFontOfSize:14]}]];
+            [weakSelf.protocolBtn setAttributedTitle:titleStr forState:UIControlStateNormal];
             weakSelf.protocolUrl = loanModel.whale.sperm;
         }
         [weakSelf buildAllCertificationView:loanModel.schooner];

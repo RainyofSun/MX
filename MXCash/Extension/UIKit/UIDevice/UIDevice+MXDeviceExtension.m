@@ -13,6 +13,10 @@
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import <ifaddrs.h>
 #import <arpa/inet.h>
+#include <sys/utsname.h>
+#import <sys/mount.h>
+#import <sys/statvfs.h>
+#import <mach/mach.h>
 
 @implementation UIDevice (MXDeviceExtension)
 
@@ -95,7 +99,7 @@
     if ([self isBatteryMonitoringEnabled]) {
         float batteryLevel = [self batteryLevel];
         BOOL isCharge = self.batteryState == UIDeviceBatteryStateCharging || self.batteryState == UIDeviceBatteryStateFull ? YES : NO;
-        return @[[NSString stringWithFormat:@"%f", batteryLevel], [NSString stringWithFormat:@"%@", [NSNumber numberWithBool:isCharge]]];
+        return @[[NSString stringWithFormat:@"%ld", (long)(batteryLevel * 100)], [NSString stringWithFormat:@"%@", [NSNumber numberWithBool:isCharge]]];
     } else {
         return @[];
     }
@@ -254,5 +258,52 @@
     return address;
 }
 
++ (NSDictionary *)getAppDiskSizeWithNeedFormate {
+    NSURL *fileURL = [NSURL fileURLWithPath:@"/private/var"];
+    NSError *error = nil;
+
+    // 获取磁盘资源的相关值
+    NSDictionary *values = [fileURL resourceValuesForKeys:@[
+        NSURLVolumeAvailableCapacityKey,
+        NSURLVolumeAvailableCapacityForImportantUsageKey,
+        NSURLVolumeAvailableCapacityForOpportunisticUsageKey,
+        NSURLVolumeTotalCapacityKey
+    ] error:&error];
+
+    if (error) {
+        NSLog(@"Error retrieving capacity: %@", error.localizedDescription);
+        return @{@"availableCapacity": @"", @"usedCapacity": @"", @"totalCapacity": @""};
+    }
+
+    // 获取可用容量和总容量
+    NSNumber *volumeAvailableCapacityForImportantUsage = values[NSURLVolumeAvailableCapacityForImportantUsageKey];
+    NSNumber *volumeTotalCapacity = values[NSURLVolumeTotalCapacityKey];
+
+    if (volumeAvailableCapacityForImportantUsage && volumeTotalCapacity) {
+        // 使用字节数格式化器
+        NSByteCountFormatter *formatter = [[NSByteCountFormatter alloc] init];
+        // 获取总容量并格式化为 GB
+        NSString *totalCapacityString = [formatter stringFromByteCount:volumeTotalCapacity.longLongValue];
+        // 获取可用容量并格式化为 GB
+        NSString *availableCapacityString = [formatter stringFromByteCount:volumeAvailableCapacityForImportantUsage.longLongValue];
+
+        return @{
+            @"availableCapacity": [NSString stringWithFormat:@"%lld", volumeAvailableCapacityForImportantUsage.longLongValue],
+            @"totalCapacity": [NSString stringWithFormat:@"%lld", volumeTotalCapacity.longLongValue]
+        };
+    }
+
+    return @{@"availableCapacity": @"", @"totalCapacity": @""};
+}
+
++ (NSString *)getFreeMemory {
+    // 获取当前设备的 VM 统计数据
+    vm_statistics_data_t vmStats;
+    mach_msg_type_number_t count = HOST_VM_INFO_COUNT;
+    host_statistics(mach_host_self(), HOST_VM_INFO, (host_info_t)&vmStats, &count);
+    
+    // 计算空闲内存（以字节为单位）
+    return [NSString stringWithFormat:@"%lu", (vmStats.free_count * vm_page_size)];
+}
 
 @end

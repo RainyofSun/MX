@@ -24,9 +24,10 @@
     [self setImage:nil forState:UIControlStateNormal];
     
     if (self.activityView.superview == nil) {
+        self.activityView.alpha = 1;
         [self addSubview:self.activityView];
         [self.activityView mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.center.mas_equalTo(self);
+            make.center.mas_equalTo(self);
         }];
     }
     

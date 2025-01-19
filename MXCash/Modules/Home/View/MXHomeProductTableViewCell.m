@@ -139,6 +139,7 @@
         _jumpBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         NSAttributedString *attriteStr = [NSAttributedString attachmentImage:@"home_arrow" afterText:YES imagePosition:-1 attributeString:[[MXAPPLanguage language] languageValue:@"home_product_see"] textColor:BLACK_COLOR_333333 textFont:[UIFont systemFontOfSize:12]];
         [_jumpBtn setAttributedTitle:attriteStr forState:UIControlStateNormal];
+        _jumpBtn.enabled = NO;
     }
     
     return _jumpBtn;

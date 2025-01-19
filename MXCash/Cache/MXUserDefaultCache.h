@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)deleteLoginInfoCache;
 + (void)cacheLanguageCode:(NSString *)code;
 + (LanguageBundleType)readLanguageCodeFromCache;
++ (BOOL)shouldShowLocationAlert;
 
 @end
 

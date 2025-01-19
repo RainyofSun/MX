@@ -24,6 +24,7 @@
         self.backgroundColor = [UIColor colorWithHexString:@"#FDCE58"];
         self.layer.cornerRadius = 16;
         self.clipsToBounds = YES;
+        self.processView.transform = CGAffineTransformMakeScale(1.0, 2.7);
         
         [self addSubview:self.imgView];
         [self addSubview:self.titleLab];
@@ -49,16 +50,17 @@
         [self.processView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.titleLab);
             make.right.mas_equalTo(self).offset(-PADDING_UNIT * 2.5);
-            make.height.mas_equalTo(10);
-            make.top.mas_equalTo(self.titleLab.mas_bottom).offset(PADDING_UNIT * 2);
+            make.top.mas_equalTo(self.titleLab.mas_bottom).offset(PADDING_UNIT * 4);
         }];
     }
     return self;
 }
 
 - (void)updateProcess:(CGFloat)process {
-    self.numberLab.text = [NSString stringWithFormat:@"%@%d", @"%", (int)ceil(process * 100)];
-    [self.processView setProgress:process animated:YES];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.numberLab.text = [NSString stringWithFormat:@"%d%@", (int)ceil(process * 100), @"%"];
+        [self.processView setProgress:process animated:YES];
+    });
 }
 
 - (UIImageView *)imgView {

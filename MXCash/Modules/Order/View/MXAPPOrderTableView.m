@@ -12,9 +12,10 @@
 
 static NSString *CELL_ID = @"MXAPPOrderTableViewCell";
 
-@interface MXAPPOrderTableView ()<UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource>
+@interface MXAPPOrderTableView ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) NSMutableArray <MXAPPOrderItemModel *>*order_models;
+@property (nonatomic, strong) MXAPPEmptyView *emptyView;
 
 @end
 
@@ -29,17 +30,25 @@ static NSString *CELL_ID = @"MXAPPOrderTableViewCell";
         
         self.delegate = self;
         self.dataSource = self;
-        self.emptyDataSetDelegate = self;
-        self.emptyDataSetSource = self;
+        [self addSubview:self.emptyView];
+        WeakSelf;
+        self.emptyView.tryBlcok = ^{
+            [weakSelf.refreshDelegate gotoHomePage];
+        };
         
         [self registerClass:[MXAPPOrderTableViewCell class] forCellReuseIdentifier:CELL_ID];
-        WeakSelf;
         [self addMJRefresh:NO refreshCall:^(BOOL refresh) {
             [weakSelf.refreshDelegate beginRefreshOrderData:weakSelf];
         }];
     }
     
     return self;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    self.emptyView.frame = self.bounds;
 }
 
 - (void)refreshOrderWithSource:(NSArray<MXAPPOrderItemModel *> *)source {
@@ -62,6 +71,7 @@ static NSString *CELL_ID = @"MXAPPOrderTableViewCell";
 
 #pragma mark - UITableViewDelegate & UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    self.emptyView.hidden = self.order_models.count != 0;
     return self.order_models.count;
 }
 
@@ -75,31 +85,21 @@ static NSString *CELL_ID = @"MXAPPOrderTableViewCell";
     [self.selectDelegate didSelectedOrder:self.order_models[indexPath.row]];
 }
 
-#pragma mark - DZNEmptyDataSetDelegate, DZNEmptyDataSetSource
-- (UIView *)customViewForEmptyDataSet:(UIScrollView *)scrollView {
-    MXAPPEmptyView *emptyView = [[MXAPPEmptyView alloc] initWithFrame:scrollView.bounds];
-    [scrollView addSubview:emptyView];
-    WeakSelf;
-    emptyView.tryBlcok = ^{
-        [weakSelf.refreshDelegate beginRefreshOrderData:weakSelf];
-    };
-    return emptyView;
-}
-
-- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView {
-    return [self numberOfRowsInSection:0] == 0;
-}
-
-- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView {
-    return YES;
-}
-
 - (NSMutableArray<MXAPPOrderItemModel *> *)order_models {
     if (!_order_models) {
         _order_models = [NSMutableArray array];
     }
     
     return _order_models;
+}
+
+- (MXAPPEmptyView *)emptyView {
+    if (!_emptyView) {
+        _emptyView = [[MXAPPEmptyView alloc] initWithFrame:CGRectZero];
+        _emptyView.hidden = YES;
+    }
+    
+    return _emptyView;
 }
 
 @end

@@ -23,6 +23,7 @@
 @property (nonatomic, strong) UIView *lineView;
 @property (nonatomic, strong) MXAPPLoadingButton *applyButton;
 @property (nonatomic, strong) GCMarqueeView *marqueeView;
+@property (nonatomic, strong) UIControl *controlView;
 
 @end
 
@@ -63,8 +64,13 @@
     [self.cashDelegate clickLoanApply:sender];
 }
 
+- (void)gotoLoanApply {
+    [self.cashDelegate clickLoanApply:self.applyButton];
+}
+
 - (void)setupUI {
     
+    [self.controlView addTarget:self action:@selector(gotoLoanApply) forControlEvents:UIControlEventTouchUpInside];
     [self.applyButton addTarget:self action:@selector(clickLoanApplyButton:) forControlEvents:UIControlEventTouchUpInside];
     
     [self addSubview:self.bView];
@@ -77,6 +83,7 @@
     [self.tView addSubview:self.lineView];
     [self.tView addSubview:self.termLab];
     [self.tView addSubview:self.rateLab];
+    [self.tView addSubview:self.controlView];
     [self.tView addSubview:self.applyButton];
     
     [self.bView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -147,6 +154,10 @@
         make.top.mas_equalTo(self.lineView.mas_bottom).offset(PADDING_UNIT * 7);
         make.height.mas_equalTo(50);
         make.bottom.mas_equalTo(self.tView).offset(-PADDING_UNIT * 4);
+    }];
+    
+    [self.controlView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.tView);
     }];
 }
 
@@ -259,6 +270,14 @@
     }
     
     return _marqueeView;
+}
+
+- (UIControl *)controlView {
+    if (!_controlView) {
+        _controlView = [[UIControl alloc] initWithFrame:CGRectZero];
+    }
+    
+    return _controlView;
 }
 
 @end

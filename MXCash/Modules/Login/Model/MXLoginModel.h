@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MXLoginModel : NSObject
+@interface MXLoginModel : NSObject<NSCopying>
 
 /// 登录手机号
 @property (nonatomic, copy) NSString *composer;

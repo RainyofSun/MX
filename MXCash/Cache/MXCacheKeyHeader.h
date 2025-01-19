@@ -14,5 +14,7 @@ static NSString * const app_first_install_key = @"app_first_install_key";
 static NSString * const cache_login_info_key = @"cache_login_info_key";
 /// 多语言
 static NSString * const language_code_key = @"language_code_key";
+/// 今天是否展示过弹窗
+static NSString * const show_location_alert_today = @"show_location_alert_today";
 
 #endif /* MXCacheKeyHeader_h */

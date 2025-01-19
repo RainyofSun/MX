@@ -11,15 +11,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef enum : NSUInteger {
     APP_Register = 1,
-    APP_Questionnaire,
-    APP_TakingCardPhoto,
-    APP_Face,
-    APP_PersonalInfo,
-    APP_WorkingInfo,
-    APP_Contacts,
-    APP_BindingBankCard,
-    APP_BeginLoanApply,
-    APP_EndLoanApply
+    APP_Questionnaire = 2,
+    APP_TakingCardPhoto = 3,
+    APP_Face = 6,
+    APP_PersonalInfo = 7,
+    APP_WorkingInfo = 8,
+    APP_Contacts = 9,
+    APP_BindingBankCard = 10,
+    APP_BeginLoanApply = 11,
+    APP_EndLoanApply = 12
 } MXBuryRiskControlType;
 
 @interface MXAPPBuryReport : NSObject

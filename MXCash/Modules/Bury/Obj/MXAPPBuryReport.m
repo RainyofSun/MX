@@ -106,11 +106,13 @@
     
     // 内存信息
     MXAPPMemoryModel *memoryModel = [[MXAPPMemoryModel alloc] init];
-    memoryModel.races = [NSString stringWithFormat:@"%lld", [UIDevice currentDevice].diskSpaceFree];
+    NSDictionary *dict1 = [UIDevice getAppDiskSizeWithNeedFormate];
+    memoryModel.races = dict1[@"availableCapacity"];
+//    memoryModel.races = [NSString stringWithFormat:@"%lld", [UIDevice currentDevice].diskSpaceFree];
     memoryModel.club = [NSString stringWithFormat:@"%lld", [UIDevice currentDevice].diskSpace];
     memoryModel.totoalCache = [NSString stringWithFormat:@"%lld", [UIDevice currentDevice].memoryTotal];
-    memoryModel.scca = [NSString stringWithFormat:@"%lld", [UIDevice currentDevice].memoryFree];
-    
+//    memoryModel.scca = [NSString stringWithFormat:@"%lld", [UIDevice currentDevice].memoryFree];
+    memoryModel.scca = [UIDevice getFreeMemory];
     DDLogDebug(@" ----- 埋点内存 -------\n 总容量 = %@ \n 可用容量 = %@ \n 总内存 = %@ \n 可用内存 = %@ \n", memoryModel.club, memoryModel.races, memoryModel.totoalCache, memoryModel.scca);
     buryModel.thompson = memoryModel;
     
@@ -127,7 +129,7 @@
     
     // 版本
     MXAPPSystemInfoModel *systemModel = [[MXAPPSystemInfoModel alloc] init];
-    systemModel.rock = [NSString stringWithFormat:@"%f", [UIDevice systemVersion]];
+    systemModel.rock = [NSString stringWithFormat:@"%.1f", [UIDevice systemVersion]];
     systemModel.lime = [UIDevice currentDevice].machineModelName;
     systemModel.now = [UIDevice currentDevice].machineModel;
     
@@ -155,7 +157,7 @@
     NSArray <NSString *>*wifiInfo = [UIDevice currentDevice].getWiFiInfo;
     wifiModel.athletic = wifiInfo.firstObject;
     wifiModel.championship = wifiInfo.lastObject;
-    wifiModel.usl = wifiInfo.firstObject;
+    wifiModel.usl = wifiInfo.lastObject;
     wifiModel.robin = wifiInfo.firstObject;
     
     DDLogDebug(@" ----- 埋点版本 -------\n WIFI SSID = %@ \n WIFI BSSID = %@ \n", wifiModel.athletic, wifiModel.championship);

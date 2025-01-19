@@ -67,6 +67,8 @@ static NSString * const APP_CONFIRM_APPLY_METHOD = @"ByIn";
 static NSString * const APP_NET_CHANGE_NOTIFICATION = @"com.mx.notification.name.net.change";
 /// 登录状态失效
 static NSString * const APP_LOGIN_EXPIRED_NOTIFICATION = @"com.mx.notification.name.login.expired";
+/// 登录成功
+static NSString * const APP_LOGIN_SUCCESS_NOTIFICATION = @"com.mx.notification.name.login.success";
 
 #pragma mark - Macro
 #define WeakSelf  __weak typeof(self) weakSelf = self

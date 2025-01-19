@@ -136,7 +136,7 @@
     [self.protocolTextView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.protocolBtn.mas_right).offset(PADDING_UNIT * 1.5);
         make.top.mas_equalTo(self.loginBtn.mas_bottom).offset(PADDING_UNIT);
-        make.right.mas_equalTo(self).offset(-PADDING_UNIT * 4);
+        make.right.mas_equalTo(self).offset(-PADDING_UNIT);
         make.bottom.mas_equalTo(self).offset(-PADDING_UNIT * 7);
     }];
 }
@@ -187,6 +187,7 @@
         _phoneTextFiled.clipsToBounds = YES;
         _phoneTextFiled.borderStyle = UITextBorderStyleNone;
         _phoneTextFiled.backgroundColor = [UIColor colorWithHexString:@"#FFF5E4"];
+        _phoneTextFiled.keyboardType = UIKeyboardTypeNumberPad;
     }
     
     return _phoneTextFiled;
@@ -216,6 +217,7 @@
         self.timerBtn = timer;
         _codeTextFiled.rightView = timer;
         _codeTextFiled.rightViewMode = UITextFieldViewModeAlways;
+        _codeTextFiled.keyboardType = UIKeyboardTypeNumberPad;
     }
     
     return _codeTextFiled;

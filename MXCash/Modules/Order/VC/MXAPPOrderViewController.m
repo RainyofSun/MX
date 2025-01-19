@@ -35,6 +35,11 @@
     [self.view addSubview:self.textImgView];
     [self.view addSubview:self.orderImgView];
     [self.view addSubview:self.contentView];
+    
+    WeakSelf;
+    self.contentView.GotoHomeBlock = ^{
+        weakSelf.tabBarController.selectedIndex = 0;
+    };
 }
 
 - (void)layoutOrderSubViews {
@@ -56,7 +61,7 @@
 
 - (UIImageView *)textImgView {
     if (!_textImgView) {
-        NSString *name = [MXUserDefaultCache readLanguageCodeFromCache] == English ? @"order_top_text_img" : @"order_top_text_img_es@3x";
+        NSString *name = [MXUserDefaultCache readLanguageCodeFromCache] == English ? @"order_top_text_img" : @"order_top_text_img_es";
         _textImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:name]];
     }
     

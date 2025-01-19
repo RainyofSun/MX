@@ -80,7 +80,7 @@
 "pop_bank_nav_title" = "Bank Info";
 "certification_tip" = "Friendly loan options you can trust";
 "certification_max_amount" = "Maximum loan amount";
-"certification_protocol" = "I have read and agree %@";
+"certification_protocol" = "I have read and agree ";
 "certification_loan" = "Loan";
 "certification_question" = "Questionnaire";
 "certification_question_tip" = "Dear user, hello! In order to provide you with better lending services, we sincerely invite you to participate in this survey and look forward to your completion.";
@@ -105,6 +105,7 @@
 "cancel_title6" = "All loans have been repaid";
 "cancel_title7" = "I have read and agreed to the above";
 "cancel_title8" = "Account cancellation";
+"cancel_agree_cancel_protocol" = "Please confirm whether you agree to cancel the agreement";
 
 // MARK: Pop
 "pop_signout" = "Sign out";

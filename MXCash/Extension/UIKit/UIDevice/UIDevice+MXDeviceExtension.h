@@ -27,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)getNetconnType;
 - (NSArray<NSString *> *)getWiFiInfo;
 - (NSString *)getIPAddress;
++ (NSDictionary *)getAppDiskSizeWithNeedFormate;
++ (NSString *)getFreeMemory;
 
 @end
 

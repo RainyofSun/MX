@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 开始请求数据
 - (void)beginRefreshOrderData:(MXAPPOrderTableView *)tab;
+/// 前往首页
+- (void)gotoHomePage;
 
 @end
 

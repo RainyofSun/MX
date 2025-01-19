@@ -46,14 +46,15 @@
     sender.enabled = NO;
     [sender startTimer];
     self.buryBeginTime = [NSDate timeStamp];
-    
+    [self.view makeToastActivity:CSToastPositionCenter];
     WeakSelf;
     [MXNetRequestManager AFNReqeustType:AFNRequestType_Post reqesutUrl:@"secondary/jacob" params:@{@"edward": phone} success:^(NSURLSessionDataTask * _Nullable task, struct SuccessResponse responseObject) {
+        [weakSelf.view hideToastActivity];
         [weakSelf.view makeToast:responseObject.responseMsg];
         [weakSelf.loginInputView codeShowKeyboard];
         sender.enabled = YES;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
-        
+        [weakSelf.view hideToastActivity];
     }];
 }
 
@@ -65,13 +66,15 @@
     
     sender.enabled = NO;
     self.buryBeginTime = [NSDate timeStamp];
+    [self.view makeToastActivity:CSToastPositionCenter];
     WeakSelf;
     [MXNetRequestManager AFNReqeustType:AFNRequestType_Post reqesutUrl:@"secondary/waller" params:@{@"edward": phone} success:^(NSURLSessionDataTask * _Nullable task, struct SuccessResponse responseObject) {
+        [weakSelf.view hideToastActivity];
         [weakSelf.view makeToast:responseObject.responseMsg];
         [weakSelf.loginInputView codeShowKeyboard];
         sender.enabled = YES;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
-        
+        [weakSelf.view hideToastActivity];
     }];
 }
 
@@ -91,10 +94,10 @@
     WeakSelf;
     [MXNetRequestManager AFNReqeustType:AFNRequestType_Post reqesutUrl:@"secondary/nekita" params:@{@"composer": phone, @"crandall":code} success:^(NSURLSessionDataTask * _Nullable task, struct SuccessResponse responseObject) {
         [sender stopAnimation];
-        MXLoginModel *loginModel = [MXLoginModel modelWithDictionary:responseObject.jsonDict];
         // 记录登录态
-        [MXGlobal global].loginModel = loginModel;
+        [MXGlobal global].loginModel = [MXLoginModel modelWithDictionary:responseObject.jsonDict];
         [[MXGlobal global] encoderUserLoginInfo];
+        [[NSNotificationCenter defaultCenter] postNotificationName:(NSNotificationName)APP_LOGIN_SUCCESS_NOTIFICATION object:nil];
         // 埋点
         [MXAPPBuryReport riskControlReport:APP_Register beginTime:weakSelf.buryBeginTime endTime:[NSDate timeStamp] orderNumber:nil];
         [weakSelf clickBackButton:weakSelf.backBtn];

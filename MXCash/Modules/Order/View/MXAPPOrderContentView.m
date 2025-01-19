@@ -99,6 +99,12 @@
     }];
 }
 
+- (void)gotoHomePage {
+    if (self.GotoHomeBlock) {
+        self.GotoHomeBlock();
+    }
+}
+
 #pragma mark - OrderTableSelectedProtocol
 - (void)didSelectedOrder:(MXAPPOrderItemModel *)order {
     if ([NSString isEmptyString:order.foxforce]) {

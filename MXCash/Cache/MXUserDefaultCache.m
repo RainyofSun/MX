@@ -41,12 +41,26 @@
 
 + (LanguageBundleType)readLanguageCodeFromCache {
     NSString *code = [self MXGetCacheValueForKey:language_code_key];
-    if ([code isEqualToString:@"en"]) {
+    if ([code isEqualToString:@"1"]) {
         return English;
-    } else if ([code isEqualToString:@"es"]) {
+    } else if ([code isEqualToString:@"2"]) {
         return Mexico;
     } else {
         return English;
+    }
+}
+
++ (BOOL)shouldShowLocationAlert {
+    NSCalendar *tempCalecdar = [NSCalendar currentCalendar];
+    NSInteger dayTime = [tempCalecdar component:NSCalendarUnitDay fromDate:[NSDate date]];
+    NSInteger recordTime = [[self MXGetCacheValueForKey:show_location_alert_today] integerValue];
+    
+    if (dayTime == recordTime) {
+        // 今天已经显示
+        return NO;
+    } else {
+        [self MXCacheValue:@(dayTime) forKey:show_location_alert_today];
+        return YES;
     }
 }
 

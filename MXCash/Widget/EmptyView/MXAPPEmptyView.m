@@ -21,6 +21,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         
+        self.userInteractionEnabled = YES;
+        
         [self.tryBtn addTarget:self action:@selector(clickTryButton:) forControlEvents:UIControlEventTouchUpInside];
         
         [self addSubview:self.imgView];

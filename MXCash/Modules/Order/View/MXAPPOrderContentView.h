@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MXAPPOrderContentView : UIView
 
+@property (nonatomic, copy) void(^GotoHomeBlock)(void);
+
 - (void)refreshOrder;
 
 @end

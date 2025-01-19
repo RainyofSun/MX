@@ -33,7 +33,6 @@
             make.top.mas_equalTo(self.processBar.mas_bottom).offset(PADDING_UNIT * 5.5);
             make.left.mas_equalTo(self.processBar);
             make.width.mas_equalTo(self.contentView).multipliedBy(0.6);
-            make.bottom.mas_equalTo(self.contentView).offset(-PADDING_UNIT * 3);
         }];
         
         [self.topImgView mas_makeConstraints:^(MASConstraintMaker *make) {

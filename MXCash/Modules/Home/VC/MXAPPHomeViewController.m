@@ -35,11 +35,23 @@
     [self setupUI];
     [self layoutHomeViews];
     [self downloadCityList];
+    [self showLocationAlert];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.contentView refresh:YES];
+}
+
+- (void)showLocationAlert {
+    if ([[MXGlobal global].languageCode isEqualToString:@"2"]
+        && [[MXAuthorizationTool authorization] locationAuthorization] != Authorized && [[MXAuthorizationTool authorization] locationAuthorization] != Limited && [MXUserDefaultCache shouldShowLocationAlert]) {
+        NSString *title = [[MXAPPLanguage language] languageValue:@"alert_location"];
+        [[UIDevice currentDevice].keyWindow.rootViewController showSystemStyleSettingAlert:title okTitle:nil cancelTitle:nil];
+    }
+}
+
+- (void)loadRequest {
     // 位置上报
     [self updateLocation];
     [MXAPPBuryReport appLocationReport];
@@ -49,9 +61,6 @@
     }
     // 设备信息上报
     [MXAPPBuryReport currentDeviceInfoReport];
-}
-
-- (void)loadRequest {
     WeakSelf;
     [MXNetRequestManager AFNReqeustType:AFNRequestType_Post reqesutUrl:@"secondary/laureate" params:nil success:^(NSURLSessionDataTask * _Nullable task, struct SuccessResponse responseObject) {
         [weakSelf.contentView refresh:NO];
@@ -94,9 +103,9 @@
     [sender startAnimation];
     WeakSelf;
     [MXNetRequestManager AFNReqeustType:AFNRequestType_Post reqesutUrl:@"secondary/poet" params:@{@"tin": productId} success:^(NSURLSessionDataTask * _Nullable task, struct SuccessResponse responseObject) {
+        [sender stopAnimation];
         MXAPPProductAuthModel *authModel = [MXAPPProductAuthModel modelWithDictionary:responseObject.jsonDict];
         [[MXAPPRouting shared] pageRouter:authModel.figures backToRoot:YES targetVC:[[MXAPPProductViewController alloc] initWithProductIDNumber:weakSelf.recommendProduct.broadbill]];
-        [sender stopAnimation];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
         [sender stopAnimation];
     }];

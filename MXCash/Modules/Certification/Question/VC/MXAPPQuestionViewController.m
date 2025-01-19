@@ -68,6 +68,10 @@
     return view;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 245;
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     return [[UIView alloc] init];
 }
@@ -80,7 +84,7 @@
 - (void)didSelectedChoise:(NSDictionary *)value cellIndex:(NSIndexPath *)index {
     self.modelArray[index.row].tartan = [NSString stringWithFormat:@"%@", value.allValues.firstObject];
     [self.questionDict addEntriesFromDictionary:value];
-    NSLog(@"///// ----- \n %@ ----", self.questionDict);
+    DDLogDebug(@"///// ----- \n %@ ----", self.questionDict);
 }
 
 - (void)clickSaveButton:(MXAPPLoadingButton *)sender {

@@ -73,7 +73,7 @@
 "pop_bank_nav_title" = "Información del banco";
 "certification_tip" = "Préstamos amistosos en los que puede confiar";
 "certification_max_amount" = "Importe máximo del préstamo";
-"certification_protocol" = "He leído y acepto el %@";
+"certification_protocol" = "He leído y acepto el ";
 "certification_loan" = "Préstamo";
 "certification_question" = "Cuestionario";
 "certification_question_tip" = "Estimado usuario, ¡hola! Con el fin de ofrecerle mejores servicios de préstamo, le invitamos sinceramente a participar en esta encuesta y esperamos que la complete.";
@@ -103,6 +103,7 @@
 "cancel_title6" = "Todos los préstamos han sido reembolsados";
 "cancel_title7" = "He leído y estoy de acuerdo con lo anterior.";
 "cancel_title8" = "Cancelación de la cuenta";
+"cancel_agree_cancel_protocol" = "Por favor confirme si está de acuerdo con cancelar el acuerdo";
 
 // MARK: Pop
 "pop_signout" = "Cerrar sesión";

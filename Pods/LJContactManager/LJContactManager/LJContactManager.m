@@ -269,7 +269,11 @@
         }
         else
         {
-            _blockExecute(completion, status == CNAuthorizationStatusAuthorized);
+            if (@available(iOS 18.0, *)) {
+                _blockExecute(completion, status == CNAuthorizationStatusAuthorized || status == CNAuthorizationStatusLimited);
+            } else {
+                _blockExecute(completion, status == CNAuthorizationStatusAuthorized);
+            }
         }
     }
     else
@@ -386,10 +390,10 @@ void _blockExecute(void (^completion)(BOOL authorizationA), BOOL authorizationB)
 
 - (void)_showAlertFromController:(UIViewController *)controller
 {
-    UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"您的通讯录暂未允许访问，请去设置->隐私里面授权!" preferredStyle:UIAlertControllerStyleAlert];
-    [alertControl addAction:([UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"" message:@"The APP applies to access the contact list. Easily upload contact information to simplify steps and accelerate the loan application." preferredStyle:UIAlertControllerStyleAlert];
+    [alertControl addAction:([UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
     }])];
-    [alertControl addAction:([UIAlertAction actionWithTitle:@"去设置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    [alertControl addAction:([UIAlertAction actionWithTitle:@"Go Setting" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
         if ([[UIApplication sharedApplication] canOpenURL:url]) {
             if (@available(iOS 10.0, *)) {
