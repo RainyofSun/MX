@@ -22,14 +22,16 @@
 
 @property (nonatomic, strong) NSMutableArray <MXAPPEmergencyPersonModel *>*personModel;
 @property (nonatomic, strong) NSDateFormatter *timeFormater;
+@property (nonatomic, copy) NSString *navTitle;
 
 @end
 
 @implementation MXAPPContactsViewController
 
-- (instancetype)initWithCertificationProcess:(CGFloat)process {
+- (instancetype)initWithCertificationProcess:(CGFloat)process citificationTitle:(nonnull NSString *)title {
     if (self = [super initWithNibName:nil bundle:nil]) {
         self.process = process;
+        self.navTitle = title;
     }
     
     return self;
@@ -223,7 +225,7 @@
 }
 
 - (void)setupUI {
-    self.title = [[MXAPPLanguage language] languageValue:@"pop_contacts_nav_title"];
+    self.title = self.navTitle;
     
     [self.saveBtn addTarget:self action:@selector(clickSaveBtn:) forControlEvents:UIControlEventTouchUpInside];
     

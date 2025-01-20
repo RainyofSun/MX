@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) CertificationType type;
 @property (nonatomic, copy, readonly) NSString *jumpUrl;
+@property (nonatomic, copy, readonly) NSString *citificationTitle;
 
 - (void)reloadCertificationView:(MXAPPCertificationModel *)model showLine:(BOOL)show;
 

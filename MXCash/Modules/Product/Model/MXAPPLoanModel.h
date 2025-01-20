@@ -26,6 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readonly) CertificationType type;
 /// 跳转地址 h5绑卡页面  有值时拼接公参跳转h5页面
 @property (nonatomic, copy) NSString *figures;
+@property (nonatomic, copy) NSString *coined;
+
 @end
 
 @interface MXAPPLoanModel : NSObject<YYModel>

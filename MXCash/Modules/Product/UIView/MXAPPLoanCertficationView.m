@@ -65,6 +65,10 @@
     self.jumpUrl = model.figures;
 }
 
+- (NSString *)citificationTitle {
+    return self.titleLab.text;
+}
+
 - (UILabel *)titleLab {
     if (!_titleLab) {
         _titleLab = [[UILabel alloc] initWithFrame:CGRectZero];

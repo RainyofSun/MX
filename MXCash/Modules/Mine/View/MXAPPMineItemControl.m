@@ -23,12 +23,13 @@
         [self addSubview:self.imgView];
         
         [self.imgView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.centerX.mas_equalTo(self);
+            make.top.mas_equalTo(self).offset(PADDING_UNIT * 5);
+            make.centerX.mas_equalTo(self);
             make.size.mas_equalTo(CGSizeMake(44, 44));
         }];
         
         [self.titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.imgView.mas_bottom).offset(PADDING_UNIT);
+            make.top.mas_equalTo(self.imgView.mas_bottom);
             make.left.right.mas_equalTo(self);
             make.bottom.mas_equalTo(self).offset(-PADDING_UNIT);
         }];
@@ -38,7 +39,9 @@
 
 - (void)setItemTitle:(NSString *)title andImage:(NSString *)image {
     self.titleLab.text = title;
-    self.imgView.image = [UIImage imageNamed:image];
+    if (![NSString isEmptyString:image]) {
+        [self.imgView setImageWithURL:[NSURL URLWithString:image] options:YYWebImageOptionProgressiveBlur];
+    }
 }
 
 - (UILabel *)titleLab {

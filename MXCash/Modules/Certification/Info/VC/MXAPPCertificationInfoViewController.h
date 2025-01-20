@@ -17,7 +17,7 @@ typedef enum : NSUInteger {
 
 @interface MXAPPCertificationInfoViewController : MXBaseViewController
 
-- (instancetype)initWithCertificationProcess:(CGFloat)process infoType:(CertificationInfoType)type;
+- (instancetype)initWithCertificationProcess:(CGFloat)process infoType:(CertificationInfoType)type navigationTitle:(NSString *)title;
 
 @end
 

@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MXAPPContactsViewController : MXBaseViewController
 
-- (instancetype)initWithCertificationProcess:(CGFloat)process;
+- (instancetype)initWithCertificationProcess:(CGFloat)process citificationTitle:(nonnull NSString *)title;
 
 @end
 

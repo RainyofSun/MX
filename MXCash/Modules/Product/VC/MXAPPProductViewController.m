@@ -88,6 +88,8 @@
         [MXGlobal global].productOrderNumber = loanModel.centuries.unknown;
         weakSelf.productModel = loanModel.centuries;
         weakSelf.waitCertificationModel = loanModel.inanimate;
+        [weakSelf.applyBtn setTitle:loanModel.centuries.gibbs forState:UIControlStateNormal];
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
         [weakSelf.vScrollView refresh:NO];
     }];
@@ -114,7 +116,7 @@
         jump_url = self.waitCertificationModel.figures;
     }
     
-    [self gotoCertification:type webUrl:jump_url];
+    [self gotoCertification:type webUrl:jump_url citificationTitle:sender.citificationTitle];
 }
 
 - (void)clickLoanButton:(MXAPPLoadingButton *)sender {
@@ -125,9 +127,15 @@
     
     // 如果有待认证项,优先跳转到待认证
     if (self.waitCertificationModel != nil && ![self.waitCertificationModel isEqual:[NSNull null]]) {
-        [self gotoCertification:self.waitCertificationModel.type webUrl:self.waitCertificationModel.figures];
+        [self gotoCertification:self.waitCertificationModel.type webUrl:self.waitCertificationModel.figures citificationTitle:self.waitCertificationModel.coined];
         return;
     }
+    
+    if (!self.agreeBtn.hidden && !self.agreeBtn.isSelected) {
+        [self.view makeToast:[[MXAPPLanguage language] languageValue:@"certification_agree_cancel_protocol"]];
+        return;
+    }
+    
     [sender startAnimation];
     self.buryBeginTime = [NSDate timeStamp];
     WeakSelf;
@@ -144,28 +152,28 @@
     }];
 }
 
-- (void)gotoCertification:(CertificationType)type webUrl:(NSString *)url {
+- (void)gotoCertification:(CertificationType)type webUrl:(NSString *)url citificationTitle:(NSString *)title {
     if (![NSString isEmptyString:url]) {
         [[MXAPPRouting shared] pageRouter:url backToRoot:YES targetVC:nil];
     } else {
         switch (type) {
             case Certification_Question:
-                [self.navigationController pushViewController:[[MXAPPQuestionViewController alloc] initWithCertificationProcess:self.certificationProcess] animated:YES];
+                [self.navigationController pushViewController:[[MXAPPQuestionViewController alloc] initWithCertificationProcess:self.certificationProcess citificationTitle:title] animated:YES];
                 break;
             case Certification_Card:
-                [self.navigationController pushViewController:[[MXAPPCardViewController alloc] initWithCertificationProcess:self.certificationProcess] animated:YES];
+                [self.navigationController pushViewController:[[MXAPPCardViewController alloc] initWithCertificationProcess:self.certificationProcess citificationTitle:title] animated:YES];
                 break;
             case Certification_Personal:
-                [self.navigationController pushViewController:[[MXAPPCertificationInfoViewController alloc] initWithCertificationProcess:self.certificationProcess infoType:PersonalInfo] animated:YES];
+                [self.navigationController pushViewController:[[MXAPPCertificationInfoViewController alloc] initWithCertificationProcess:self.certificationProcess infoType:PersonalInfo navigationTitle:title] animated:YES];
                 break;
             case Certification_Work:
-                [self.navigationController pushViewController:[[MXAPPCertificationInfoViewController alloc] initWithCertificationProcess:self.certificationProcess infoType:WorkingInfo] animated:YES];
+                [self.navigationController pushViewController:[[MXAPPCertificationInfoViewController alloc] initWithCertificationProcess:self.certificationProcess infoType:WorkingInfo navigationTitle:title] animated:YES];
                 break;
             case Certification_Contacts:
-                [self.navigationController pushViewController:[[MXAPPContactsViewController alloc] initWithCertificationProcess:self.certificationProcess] animated:YES];
+                [self.navigationController pushViewController:[[MXAPPContactsViewController alloc] initWithCertificationProcess:self.certificationProcess citificationTitle:title] animated:YES];
                 break;
             case Certification_Bank:
-                [self.navigationController pushViewController:[[MXAPPCertificationInfoViewController alloc] initWithCertificationProcess:self.certificationProcess infoType:BankInfo] animated:YES];
+                [self.navigationController pushViewController:[[MXAPPCertificationInfoViewController alloc] initWithCertificationProcess:self.certificationProcess infoType:BankInfo navigationTitle:title] animated:YES];
                 break;
             default:
                 break;

@@ -60,10 +60,7 @@
         if (self.repaymentTab == nil) {
             self.repaymentTab = [[MXAPPOrderTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
             [self.hScrollView addSubview:self.repaymentTab];
-            [self.repaymentTab mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.size.top.mas_equalTo(self.applyTab);
-                make.left.mas_equalTo(self.applyTab.mas_right);
-            }];
+            self.repaymentTab.frame = CGRectMake(ScreenWidth * tag, 0, ScreenWidth, self.applyTab.height);
             self.repaymentTab.selectDelegate = self;
             self.repaymentTab.refreshDelegate = self;
             self.repaymentTab.tag = 1006;
@@ -75,10 +72,7 @@
         if (self.finishedTab == nil) {
             self.finishedTab = [[MXAPPOrderTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
             [self.hScrollView addSubview:self.finishedTab];
-            [self.finishedTab mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.size.top.mas_equalTo(self.repaymentTab);
-                make.left.mas_equalTo(self.repaymentTab.mas_right);
-            }];
+            self.finishedTab.frame = CGRectMake(ScreenWidth * tag, 0, ScreenWidth, self.applyTab.height);
             self.finishedTab.selectDelegate = self;
             self.finishedTab.refreshDelegate = self;
             self.finishedTab.tag = 1005;

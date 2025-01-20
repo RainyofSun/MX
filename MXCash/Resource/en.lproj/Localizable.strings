@@ -84,9 +84,10 @@
 "certification_loan" = "Loan";
 "certification_question" = "Questionnaire";
 "certification_question_tip" = "Dear user, hello! In order to provide you with better lending services, we sincerely invite you to participate in this survey and look forward to your completion.";
-"certification_submit" = "Próximo";
+"certification_submit" = "Next";
 "certification_id_nav_title" = "Identity information";
 "certification_info_placeholder" = "Please select";
+"certification_agree_cancel_protocol" = "Please confirm whether you agree to loan agreement";
 
 // MARK: Setting
 "setting_nav_title" = "Settings";

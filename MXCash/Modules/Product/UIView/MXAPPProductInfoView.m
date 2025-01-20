@@ -42,11 +42,13 @@
         [self.termLab mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.amountLab);
             make.top.mas_equalTo(self.amountLab.mas_bottom).offset(PADDING_UNIT * 3);
+            make.width.mas_equalTo(self).multipliedBy(0.4);
         }];
         
         [self.rateLab mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(self).offset(-PADDING_UNIT * 3);
             make.centerY.mas_equalTo(self.termLab);
+            make.width.mas_equalTo(self).multipliedBy(0.4);
         }];
     }
     return self;
@@ -91,6 +93,7 @@
         _termLab = [[UILabel alloc] initWithFrame:CGRectZero];
         _termLab.textColor = BLACK_COLOR_333333;
         _termLab.font = [UIFont systemFontOfSize:14];
+        _termLab.numberOfLines = 0;
     }
     
     return _termLab;
@@ -101,6 +104,7 @@
         _rateLab = [[UILabel alloc] initWithFrame:CGRectZero];
         _rateLab.textColor = BLACK_COLOR_333333;
         _rateLab.font = [UIFont systemFontOfSize:14];
+        _rateLab.numberOfLines = 0;
     }
     
     return _rateLab;

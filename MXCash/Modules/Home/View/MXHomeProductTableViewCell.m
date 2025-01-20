@@ -168,7 +168,7 @@
 - (MXAPPLoadingButton *)applyBtn {
     if (!_applyBtn) {
         _applyBtn = [MXAPPLoadingButton buildNormalStyleButton:[[MXAPPLanguage language] languageValue:@"home_product_apply"] radius:15];
-        _applyBtn.enabled = NO;
+        _applyBtn.userInteractionEnabled = NO;
     }
     
     return _applyBtn;

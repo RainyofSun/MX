@@ -20,15 +20,16 @@
 @property (nonatomic, assign) CGFloat process;
 @property (nonatomic, assign) CertificationInfoType requestType;
 @property (nonatomic, strong) NSMutableDictionary *saveParams;
-
+@property (nonatomic, copy) NSString *navTitle;
 @end
 
 @implementation MXAPPCertificationInfoViewController
 
-- (instancetype)initWithCertificationProcess:(CGFloat)process infoType:(CertificationInfoType)type {
+- (instancetype)initWithCertificationProcess:(CGFloat)process infoType:(CertificationInfoType)type navigationTitle:(nonnull NSString *)title {
     if (self = [super initWithNibName:nil bundle:nil]) {
         self.process = process;
         self.requestType = type;
+        self.navTitle = title;
     }
     
     return self;
@@ -59,17 +60,6 @@
             return @"secondary/hero";
         case BankInfo:
             return @"secondary/sites";
-    }
-}
-
-- (NSString *)navTitle {
-    switch (self.requestType) {
-        case PersonalInfo:
-            return @"pop_personal_nav_title";
-        case WorkingInfo:
-            return @"pop_work_nav_title";
-        case BankInfo:
-            return @"pop_bank_nav_title";
     }
 }
 
@@ -202,7 +192,7 @@
 
 - (void)setupUI {
     
-    self.title = [[MXAPPLanguage language] languageValue: [self navTitle]];
+    self.title = self.navTitle;
     
     [self.saveBtn addTarget:self action:@selector(clickSaveBtn:) forControlEvents:UIControlEventTouchUpInside];
     

@@ -24,6 +24,7 @@
 @property (nonatomic, strong) MXAPPCardItem *backItem;
 
 @property (nonatomic, assign) CGFloat process;
+@property (nonatomic, copy) NSString *navTitle;
 @property (nonatomic, assign) BOOL isFace;
 @property (nonatomic, strong) MXAPPCardModel *cardModel;
 
@@ -31,9 +32,10 @@
 
 @implementation MXAPPCardViewController
 
-- (instancetype)initWithCertificationProcess:(CGFloat)process {
+- (instancetype)initWithCertificationProcess:(CGFloat)process citificationTitle:(nonnull NSString *)title {
     if (self = [super initWithNibName:nil bundle:nil]) {
         self.process = process;
+        self.navTitle = title;
     }
     
     return self;
@@ -211,7 +213,7 @@
 
 - (void)setupUI {
     
-    self.title = [[MXAPPLanguage language] languageValue:@"certification_id_nav_title"];
+    self.title = self.navTitle;
     [self.topView updateCertificationProcess:self.process];
     self.view.backgroundColor = [UIColor whiteColor];
     

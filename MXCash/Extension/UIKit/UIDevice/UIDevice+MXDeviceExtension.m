@@ -297,13 +297,21 @@
 }
 
 + (NSString *)getFreeMemory {
-    // 获取当前设备的 VM 统计数据
+//    // 获取当前设备的 VM 统计数据
+//    vm_statistics_data_t vmStats;
+//    mach_msg_type_number_t count = HOST_VM_INFO_COUNT;
+//    host_statistics(mach_host_self(), HOST_VM_INFO, (host_info_t)&vmStats, &count);
+//    
+//    // 计算空闲内存（以字节为单位）
+//    return [NSString stringWithFormat:@"%lu", (vmStats.free_count * vm_page_size)];
     vm_statistics_data_t vmStats;
-    mach_msg_type_number_t count = HOST_VM_INFO_COUNT;
-    host_statistics(mach_host_self(), HOST_VM_INFO, (host_info_t)&vmStats, &count);
-    
-    // 计算空闲内存（以字节为单位）
-    return [NSString stringWithFormat:@"%lu", (vmStats.free_count * vm_page_size)];
+    mach_msg_type_number_t infoCount = HOST_VM_INFO_COUNT;
+    kern_return_t kernReturn = host_statistics(mach_host_self(), HOST_VM_INFO, (host_info_t)&vmStats, &infoCount);
+    if (kernReturn != KERN_SUCCESS) {
+        return @"内存查找失败";
+    }
+    long long availableMemorySize = ((vm_page_size * vmStats.free_count + vm_page_size * vmStats.inactive_count));
+    return [NSString stringWithFormat:@"%lld", availableMemorySize];
 }
 
 @end

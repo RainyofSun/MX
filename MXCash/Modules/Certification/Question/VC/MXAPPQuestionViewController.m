@@ -13,6 +13,7 @@
 @interface MXAPPQuestionViewController ()<UITableViewDelegate, UITableViewDataSource, QuestionCellProtocol>
 
 @property (nonatomic, assign) CGFloat process;
+@property (nonatomic, copy) NSString *navTitle;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) MXAPPLoadingButton *saveBtn;
 @property (nonatomic, strong) NSArray<MXAPPQuestionModel *>* modelArray;
@@ -22,9 +23,10 @@
 
 @implementation MXAPPQuestionViewController
 
-- (instancetype)initWithCertificationProcess:(CGFloat)process {
+- (instancetype)initWithCertificationProcess:(CGFloat)process citificationTitle:(nonnull NSString *)title {
     if (self = [super initWithNibName:nil bundle:nil]) {
         self.process = process;
+        self.navTitle = title;
     }
     
     return self;
@@ -69,7 +71,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 245;
+    CGFloat textHeight = [[[MXAPPLanguage language] languageValue:@"certification_question_tip"] heightForFont:[UIFont boldSystemFontOfSize:18] width:ScreenWidth * 0.6];
+    return textHeight + PADDING_UNIT * 10 + 80;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
@@ -106,7 +109,7 @@
 }
 
 - (void)setupUI {
-    self.title = [[MXAPPLanguage language] languageValue:@"certification_question"];
+    self.title = self.navTitle;
     [self hideBackgroundGradientView];
     
     [self.saveBtn addTarget:self action:@selector(clickSaveButton:) forControlEvents:UIControlEventTouchUpInside];

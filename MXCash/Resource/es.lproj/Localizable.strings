@@ -77,9 +77,10 @@
 "certification_loan" = "Préstamo";
 "certification_question" = "Cuestionario";
 "certification_question_tip" = "Estimado usuario, ¡hola! Con el fin de ofrecerle mejores servicios de préstamo, le invitamos sinceramente a participar en esta encuesta y esperamos que la complete.";
-"certification_submit" = "Next";
+"certification_submit" = "Próximo";
 "certification_id_nav_title" = "Información de identidad";
 "certification_info_placeholder" = "Por favor seleccione";
+"certification_agree_cancel_protocol" = "Por favor confirme si está de acuerdo con el contrato de préstamo";
 
 // MARK: Mine
 "mine_nav_title" = "Centro Personal";
