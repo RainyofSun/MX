@@ -43,6 +43,11 @@
     [self layoutInfoViews];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self updateLocation];
+}
+
 - (void)netRequest {
     if ([NSString isEmptyString:[MXGlobal global].productIDNumber]) {
         return;

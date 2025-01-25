@@ -27,6 +27,8 @@ static NSString * const APP_LOGIN_STATUS = @"isLoginOut";
 /// 订单号
 @property (nonatomic, copy) NSString *productOrderNumber;
 @property (nonatomic, assign, readonly) BOOL isLoginOut;
+/// 接口是否初始化成功
+@property (nonatomic, assign) BOOL isAppInitializationSuccess;
 
 + (instancetype)global;
 

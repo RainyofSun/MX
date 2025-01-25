@@ -11,14 +11,13 @@
 
 #pragma mark - URL
 #if DEBUG
-static NSString * const BASE_URL = @"http://47.251.52.24:8287/exhibits";
+static NSString * const BASE_URL = @"https://acm.perihelion-general.com/exhibits";
 #else
-static NSString * const BASE_URL = @"http://47.251.52.24:8287/exhibits";
+static NSString * const BASE_URL = @"https://acm.perihelion-general.com/exhibits";
 #endif
 
-// TODO 要替换
-#define Dynamic_Domain_URL   @"https://ph01-dc.oss-ap-southeast-6.aliyuncs.com/"
-#define Dynamic_Domain_Path  @"pera-pilot/ppt.json"
+#define Dynamic_Domain_URL   @"https://mx01-dc.oss-us-west-1.aliyuncs.com/"
+#define Dynamic_Domain_Path  @"access-cash/ac.json"
 
 #pragma mark - Frame
 #define ScreenWidth     [UIScreen mainScreen].bounds.size.width

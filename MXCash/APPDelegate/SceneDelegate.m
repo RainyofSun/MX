@@ -14,7 +14,7 @@
 #import "MXNetRequestConfig.h"
 #import "MXAPPLocationTool.h"
 
-@interface SceneDelegate ()
+@interface SceneDelegate ()<GuideProtocol>
 
 @end
 
@@ -88,16 +88,8 @@
 - (void)setAPPRootViewController {
     self.window.backgroundColor = [UIColor whiteColor];
     MXGuideViewController *guideVC = [[MXGuideViewController alloc] init];
+    guideVC.delegate = self;
     self.window.rootViewController = guideVC;
-    WeakSelf;
-    guideVC.dismissBlock = ^{
-        CATransition *animation = [[CATransition alloc] init];
-        animation.duration = 0.5;
-        animation.timingFunction = [CAMediaTimingFunction functionWithName: kCAMediaTimingFunctionEaseInEaseOut];
-        animation.type = kCATransitionFade;
-        [weakSelf.window.layer addAnimation:animation forKey:nil];
-        weakSelf.window.rootViewController = [[MXBaseTabbarController alloc] init];
-    };
     [self.window makeKeyAndVisible];
 }
 
@@ -112,23 +104,45 @@
     
     if ([[MXAuthorizationTool authorization] locationAuthorization] == Authorized || [[MXAuthorizationTool authorization] locationAuthorization] == Limited) {
         [[MXAPPLocationTool location] startLocation];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            // 定位上报
-            [MXAPPBuryReport appLocationReport];
-        });
+        if ([MXGlobal global].isAppInitializationSuccess) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                // 定位上报
+                [MXAPPBuryReport appLocationReport];
+            });
+        } else {
+            DDLogDebug(@"---------- 初始化接口未成功, 暂停埋点上报 -------");
+        }
     }
     
     if ([[MXAuthorizationTool authorization] ATTTrackingStatus] == ATTrackingManagerAuthorizationStatusAuthorized) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            // IDFA 上报
-            [MXAPPBuryReport IDFAAndIDFVReport];
-        });
+        if ([MXGlobal global].isAppInitializationSuccess) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                // IDFA 上报
+                [MXAPPBuryReport IDFAAndIDFVReport];
+            });
+        } else {
+            DDLogDebug(@"---------- 初始化接口未成功, 暂停埋点上报 -------");
+        }
     }
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        // 设备信息上报
-        [MXAPPBuryReport currentDeviceInfoReport];
-    });
+    if ([MXGlobal global].isAppInitializationSuccess) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            // 设备信息上报
+            [MXAPPBuryReport currentDeviceInfoReport];
+        });
+    } else {
+        DDLogDebug(@"---------- 初始化接口未成功, 暂停埋点上报 -------");
+    }
+}
+
+#pragma mark - GuideProtocol
+- (void)guideDidDismiss {
+    CATransition *animation = [[CATransition alloc] init];
+    animation.duration = 0.5;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName: kCAMediaTimingFunctionEaseInEaseOut];
+    animation.type = kCATransitionFade;
+    [self.window.layer addAnimation:animation forKey:nil];
+    self.window.rootViewController = [[MXBaseTabbarController alloc] init];
 }
 
 @end

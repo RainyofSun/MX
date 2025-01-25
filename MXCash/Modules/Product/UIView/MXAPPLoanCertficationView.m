@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UIImageView *arrowImgView;
 @property (nonatomic, strong) UIImageView *lineView;
 @property (nonatomic, copy, readwrite) NSString *jumpUrl;
+@property (nonatomic, assign, readwrite) BOOL hasComplete;
 
 @end
 
@@ -56,6 +57,7 @@
 
 - (void)reloadCertificationView:(MXAPPCertificationModel *)model showLine:(BOOL)show {
     self.titleLab.text = model.coined;
+    self.hasComplete = model.ssn;
     self.arrowImgView.image = model.ssn ? [UIImage imageNamed:@"certification_complete"] : [UIImage imageNamed:@"certification_arrow"];
     if (![NSString isEmptyString:model.dance]) {
         [self.logoImgView setImageWithURL:[NSURL URLWithString:model.dance] options:YYWebImageOptionProgressiveBlur];

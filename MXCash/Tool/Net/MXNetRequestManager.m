@@ -109,10 +109,19 @@
             NSURL *documentsDirectoryPath = [NSURL fileURLWithPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]];
             return [documentsDirectoryPath URLByAppendingPathComponent:[response.suggestedFilename lastPathComponent]];
         } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
-            NSString *fileContent = [[NSString alloc] initWithData:[NSData dataWithContentsOfURL:filePath] encoding:NSUTF8StringEncoding];
+            NSData *fileData = nil;
             struct SuccessResponse res;
-            res.responseMsg = fileContent;
-            success(nil, res);
+            @try {
+                fileData = [NSData dataWithContentsOfURL:filePath];
+                if (fileData != nil) {
+                    NSString *fileContent = [[NSString alloc] initWithData:fileData encoding:NSUTF8StringEncoding];
+                    res.responseMsg = fileContent;
+                }
+            } @catch (NSException *exception) {
+//                DDLogError(exception);
+            } @finally {
+                success(nil, res);
+            }
         }];
         
         [downloadTask resume];
@@ -140,7 +149,9 @@
     
     if (responseModel.nekita != 0) {
         responseModel.reqeustError = [[NSError alloc] initWithDomain:@"request.error" code:responseModel.nekita userInfo:@{NSLocalizedFailureReasonErrorKey: responseModel.troubadour}];
-        [[UIDevice currentDevice].keyWindow makeToast: responseModel.troubadour];
+        if (![NSString isEmptyString:responseModel.troubadour]) {
+            [[UIDevice currentDevice].keyWindow makeToast: responseModel.troubadour];
+        }
         return responseModel;
     }
     

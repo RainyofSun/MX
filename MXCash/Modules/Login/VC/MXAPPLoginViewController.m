@@ -44,7 +44,6 @@
         return;
     }
     sender.enabled = NO;
-    [sender startTimer];
     self.buryBeginTime = [NSDate timeStamp];
     [self.view makeToastActivity:CSToastPositionCenter];
     WeakSelf;
@@ -53,8 +52,10 @@
         [weakSelf.view makeToast:responseObject.responseMsg];
         [weakSelf.loginInputView codeShowKeyboard];
         sender.enabled = YES;
+        [sender startTimer];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
         [weakSelf.view hideToastActivity];
+        sender.enabled = YES;
     }];
 }
 
@@ -75,6 +76,7 @@
         sender.enabled = YES;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
         [weakSelf.view hideToastActivity];
+        sender.enabled = YES;
     }];
 }
 

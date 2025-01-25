@@ -111,7 +111,7 @@
     CertificationType type = sender.type;
     NSString *jump_url = sender.jumpUrl;
     
-    if (self.waitCertificationModel != nil && ![self.waitCertificationModel isEqual:[NSNull null]]) {
+    if (!sender.hasComplete && self.waitCertificationModel != nil && ![self.waitCertificationModel isEqual:[NSNull null]]) {
         type = self.waitCertificationModel.type;
         jump_url = self.waitCertificationModel.figures;
     }

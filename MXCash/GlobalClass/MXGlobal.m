@@ -23,6 +23,7 @@
         if (gl == nil) {
             gl = [[MXGlobal alloc] init];
             gl.isLoginOut = YES;
+            gl.isAppInitializationSuccess = NO;
         }
     });
     

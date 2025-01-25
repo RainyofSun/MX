@@ -44,7 +44,7 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    if (self.indexpath.row == 0) {
+    if (self.indexpath.row == 0 && !CGRectEqualToRect(self.bgView.bounds, CGRectZero)) {
         [self.bgView cutViewRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight radius:16];
     }
 }

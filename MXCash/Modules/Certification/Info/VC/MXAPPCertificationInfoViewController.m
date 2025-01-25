@@ -41,6 +41,11 @@
     [self layoutInfoViews];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self updateLocation];
+}
+
 - (NSString *)requestUrl {
     switch (self.requestType) {
         case PersonalInfo:

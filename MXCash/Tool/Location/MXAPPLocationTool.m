@@ -34,6 +34,7 @@
     if (self) {
         self.locationManager.delegate = self;
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+        self.locationManager.distanceFilter = 0.01;
     }
     return self;
 }

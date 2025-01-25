@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MXAPPDomainModel : NSObject
 
-@property (nonatomic, copy) NSString *ppt;
+@property (nonatomic, copy) NSString *ac;
 
 @end
 

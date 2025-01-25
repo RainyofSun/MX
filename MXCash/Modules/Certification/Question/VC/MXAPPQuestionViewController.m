@@ -37,6 +37,11 @@
     [self setupUI];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self updateLocation];
+}
+
 - (void)netRequest {
     WeakSelf;
     [MXNetRequestManager AFNReqeustType:AFNRequestType_Post reqesutUrl:@"secondary/statuary" params:@{@"tin":[MXGlobal global].productIDNumber} success:^(NSURLSessionDataTask * _Nullable task, struct SuccessResponse responseObject) {

@@ -44,6 +44,7 @@
     [MXNetRequestManager AFNReqeustType:AFNRequestType_Post reqesutUrl:@"secondary/druckman" params:dict success:^(NSURLSessionDataTask * _Nullable task, struct SuccessResponse responseObject) {
         [weakSelf.tryButton stopAnimation];
         MXAPPGuideModel *guideModel = [MXAPPGuideModel modelWithDictionary:responseObject.jsonDict];
+        [MXGlobal global].isAppInitializationSuccess = YES;
         [MXGlobal global].languageCode = guideModel.margaret;
         [MXGlobal global].privateProtocol = guideModel.laureate;
         // 存储语言
@@ -56,7 +57,7 @@
         // 初始化FaceBook
         [weakSelf initializationFaceBook:guideModel.poet];
 #endif
-        weakSelf.dismissBlock();
+        [weakSelf.delegate guideDidDismiss];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
         weakSelf.tryButton.hidden = NO;
         // 切换域名
@@ -69,7 +70,7 @@
     [MXNetRequestManager AFNReqeustType:AFNRequestType_Download reqesutUrl:[NSString stringWithFormat:@"%@%@",Dynamic_Domain_URL, Dynamic_Domain_Path] params:nil success:^(NSURLSessionDataTask * _Nullable task, struct SuccessResponse responseObject) {
         NSArray <MXAPPDomainModel*>* domains = [NSArray modelArrayWithClass:[MXAPPDomainModel class] json: responseObject.responseMsg];
         [domains enumerateObjectsUsingBlock:^(MXAPPDomainModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if (![NSString isEmptyString:obj.ppt] && [[MXNetRequestURL shared] setNewRequestDomainURL:obj.ppt]) {
+            if (![NSString isEmptyString:obj.ac] && [[MXNetRequestURL shared] setNewRequestDomainURL:obj.ac]) {
                 [[MXNetRequestConfig requestConfig] updateRequestURL];
                 *stop = YES;
             }

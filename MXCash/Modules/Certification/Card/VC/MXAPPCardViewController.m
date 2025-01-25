@@ -48,6 +48,11 @@
     [self netRequest];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self updateLocation];
+}
+
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     [self.contentView cutViewRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight radius:20];

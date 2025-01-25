@@ -157,6 +157,11 @@
 }
 
 - (void)clickLoginButton:(MXAPPLoadingButton *)sender {
+    if (!self.protocolBtn.isSelected) {
+        [[UIDevice currentDevice].keyWindow makeToast:[[MXAPPLanguage language] languageValue:@"login_agree_cancel_protocol"]];
+        return;
+    }
+    
     [self.loginDelegate requestLogin:sender phoneNumber:self.phoneTextFiled.text smsCode:self.codeTextFiled.text];
 }
 

@@ -9,9 +9,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol GuideProtocol <NSObject>
+
+- (void)guideDidDismiss;
+
+@end
+
 @interface MXGuideViewController : MXBaseViewController
 
-@property (nonatomic, copy) void (^dismissBlock) (void);
+@property (nonatomic, weak) id<GuideProtocol> delegate;
 
 @end
 
