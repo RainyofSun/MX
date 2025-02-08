@@ -111,7 +111,7 @@
     // 内存信息
     MXAPPMemoryModel *memoryModel = [[MXAPPMemoryModel alloc] init];
     NSDictionary *dict1 = [UIDevice getAppDiskSizeWithNeedFormate];
-    memoryModel.races = dict1[@"availableCapacity"];
+    memoryModel.races = dict1[@"m"];
 //    memoryModel.races = [NSString stringWithFormat:@"%lld", [UIDevice currentDevice].diskSpaceFree];
     memoryModel.club = [NSString stringWithFormat:@"%lld", [UIDevice currentDevice].diskSpace];
     memoryModel.totoalCache = [NSString stringWithFormat:@"%lld", [UIDevice currentDevice].memoryTotal];

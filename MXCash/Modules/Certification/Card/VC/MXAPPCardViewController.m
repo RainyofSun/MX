@@ -199,7 +199,7 @@
     WeakSelf;
     [[MXAuthorizationTool authorization] requestCameraAuthrization:^(BOOL status) {
         if (!status) {
-            [weakSelf showSystemStyleSettingAlert:[[MXAPPLanguage language] languageValue:@"alert_camera"] okTitle:nil cancelTitle:nil];
+            [weakSelf showSystemStyleSettingAlert:[[MXAPPLanguage language] languageValue:@"so"] okTitle:nil cancelTitle:nil];
             return;
         }
         

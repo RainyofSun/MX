@@ -22,7 +22,7 @@
 + (void)writeCityJsonToFile:(NSString *)fileContent {
     if ([[NSFileManager defaultManager] fileExistsAtPath:[MXGlobal global].cityPath]) {
         DDLogDebug(@"本地已存储城市列表 -----------");
-        return;
+        return;c
     }
     
     [[NSFileManager defaultManager] createFileAtPath:[MXGlobal global].cityPath contents:[fileContent dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
